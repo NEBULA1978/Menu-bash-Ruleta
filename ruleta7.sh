@@ -97,3 +97,12 @@ echo "Par: $contador_respuesta_par"
 echo "Impar: $contador_respuesta_impar"
 echo "Cantidad de jugadas ganadas: $((contador_respuesta_par + contador_respuesta_impar))"
 echo "Cantidad de jugadas perdidas: $(( ${#jugadas[@]} - contador_respuesta_par - contador_respuesta_impar))"
+
+# Este es un programa en Bash que simula un juego de ruleta. Algunas de las características del programa son:
+
+#     Pide al usuario que ingrese la cantidad de dinero que quiere jugar.
+#     Pide al usuario que elija si quiere jugar a par o impar.
+#     Juega una serie de rondas de ruleta, mostrando el resultado (par o impar) de cada ronda y actualizando la cantidad de dinero del usuario según si ganó o perdió.
+#     Cuando el usuario se queda sin dinero o decide terminar el juego, muestra el resultado final, incluyendo el número total de jugadas ganadas y perdidas, la cantidad de pares e impares, y una lista de todas las jugadas realizadas en orden inverso, indicando si cada una fue par o impar.
+
+# Además, el programa utiliza algunos operadores de comparación en Bash (como -eq y -gt) para realizar comparaciones numéricas y tomar decisiones basadas en ellas. También utiliza algunas estructuras de control de flujo (como el bucle while y los condicionales if) para controlar el flujo del programa según el comportamiento del usuario y los resultados de las jugadas.
