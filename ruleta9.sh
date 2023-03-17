@@ -47,16 +47,17 @@ while [ $dinero -gt 0 ]; do
         echo "Ha salido Par"
         ((contador_respuesta_par++))
         if [ $eleccion == "p" ]; then
-            dinero=$((dinero + apuesta))
-            echo "Has ganado. Tu dinero ahora es de $dinero."
-            apuesta=10
-        else
             apuesta=$((apuesta * 2))
             dinero=$((dinero - apuesta))
             echo "Has perdido. Tu dinero ahora es de $dinero."
             if [ $dinero -eq 0 ]; then
                 break
             fi
+            apuesta=10
+        else
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
         fi
     else
         echo "Ha salido Impar"
@@ -73,9 +74,11 @@ while [ $dinero -gt 0 ]; do
             if [ $dinero -eq 0 ]; then
                 break
             fi
+            apuesta=10
         fi
     fi
 done
+
 
 echo "Contador de respuestas:"
 echo "Par: $contador_respuesta_par"
