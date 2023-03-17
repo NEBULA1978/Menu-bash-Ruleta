@@ -106,3 +106,8 @@ echo "Cantidad de jugadas perdidas: $(( ${#jugadas[@]} - contador_respuesta_par 
 #     Cuando el usuario se queda sin dinero o decide terminar el juego, muestra el resultado final, incluyendo el número total de jugadas ganadas y perdidas, la cantidad de pares e impares, y una lista de todas las jugadas realizadas en orden inverso, indicando si cada una fue par o impar.
 
 # Además, el programa utiliza algunos operadores de comparación en Bash (como -eq y -gt) para realizar comparaciones numéricas y tomar decisiones basadas en ellas. También utiliza algunas estructuras de control de flujo (como el bucle while y los condicionales if) para controlar el flujo del programa según el comportamiento del usuario y los resultados de las jugadas.
+
+
+# Correcto, ese es el código completo del programa que simula un juego de ruleta. Como puedes ver, utiliza varias características del lenguaje Bash, incluyendo la manipulación de arreglos, operadores de comparación y estructuras de control de flujo.
+
+# Además, el programa muestra una interfaz de usuario interactiva y proporciona estadísticas detalladas al final del juego. En general, es un buen ejemplo de cómo se puede utilizar Bash para crear programas útiles y entretenidos.
