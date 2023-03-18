@@ -28,6 +28,31 @@
 #     Guetting
 #     Labouchere
 #     Inverse Labouchere
+# Para un ejemplo de cómo se pueden aplicar los conceptos anteriores en la ruleta, se podría crear un programa que simule las apuestas de un jugador en la ruleta. En este caso, se podría utilizar un array para almacenar los números en los que el jugador apuesta y luego iterar sobre los elementos del array para realizar las operaciones necesarias.
+
+# Por ejemplo, supongamos que el jugador apuesta en los números 3, 14 y 27. Se podría crear un array que contenga estos números de la siguiente manera:
+
+# css
+
+# apuestas = [3, 14, 27]
+
+# A continuación, se podría iterar sobre los elementos del array para determinar si el jugador gana o pierde. Para hacer esto, se podría utilizar una función que genere un número aleatorio entre 0 y 36 (que es el rango de números en la ruleta). Si el número generado coincide con uno de los números en los que el jugador apostó, se considera una victoria y se aplica una operatoria para determinar el pago.
+
+# Por ejemplo, si el jugador apuesta $10 en cada número y el número ganador es 14, se podría aplicar una operatoria para calcular el pago:
+
+# makefile
+
+# pago = 10 * 35  # 35-1 pago en la ruleta europea
+
+# Si el jugador pierde, se podría eliminar el número de la apuesta y recomponer el array. Por ejemplo, si el número ganador es 21, se podría eliminar el número 14 del array y recomponerlo de la siguiente manera:
+
+# scss
+
+# apuestas.remove(14)
+# apuestas.append(21)
+
+# En resumen, se pueden aplicar los conceptos de arrays, iteración, operatorias y eliminación y recomposición de elementos para simular las apuestas de un jugador en la ruleta.
+
 
 # Hay muchas más, pero estas son las principales y las más comúnmente utilizadas. ¿Cuál es la idea?, como a nosotros nos encanta esto de buscarle las cosquillas a las cosas, vamos a programar 2 de las técnicas más comunes para ver si realmente son eficaces o si al final terminamos perdiendo todo nuestro dinero.
 
