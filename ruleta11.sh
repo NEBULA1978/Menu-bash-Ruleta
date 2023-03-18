@@ -112,7 +112,7 @@ dinero_perdido=$((dinero_inicial - dinero))
 
 dinero_ganado=$((contador_respuesta_par * 10 + contador_respuesta_impar * 10))
 dinero_perdido=$((dinero_inicial - dinero))
-Muestra el resultado final, incluyendo el dinero total ganado y perdido
+# Muestra el resultado final, incluyendo el dinero total ganado y perdido
 
 echo "Resultado final:"
 echo "Cantidad de jugadas ganadas: $contador_respuesta_par"
@@ -120,6 +120,114 @@ echo "Cantidad de jugadas perdidas: $((${#jugadas[@]} - contador_respuesta_par))
 echo "Dinero total ganado: $((contador_respuesta_par * 10))"
 echo "Dinero total perdido: $((dinero_inicial - dinero))"
 echo "Tu dinero final es de $dinero."
+
+# //////////////////////////////////////////////////////////
+# //////////////////////////////////////////////////////////
+
+# Inicializar contadores y variables
+declare -A contador
+numeros_totales=0
+rojo=0
+negro=0
+uno_dieciocho=0
+diecinueve_treintayseis=0
+par=0
+impar=0
+docenas=(0 0 0)
+columnas=(0 0 0)
+
+# Números rojos y negros en la ruleta
+numeros_rojos=(1 3 5 7 9 12 14 16 18 19 21 23 25 27 30 32 34 36)
+numeros_negros=(2 4 6 8 10 11 13 15 17 20 22 24 26 28 29 31 33 35)
+
+function es_rojo() {
+    for num in "${numeros_rojos[@]}"; do
+        if [ "$1" -eq "$num" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+function es_negro() {
+    for num in "${numeros_negros[@]}"; do
+        if [ "$1" -eq "$num" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+function actualizar_contadores() {
+    numero=$1
+    ((contador[$numero]++))
+    ((numeros_totales++))
+
+    if es_rojo "$numero"; then
+        ((rojo++))
+    elif es_negro "$numero"; then
+        ((negro++))
+    fi
+
+    if [ "$numero" -ge 1 ] && [ "$numero" -le 18 ]; then
+        ((uno_dieciocho++))
+    elif [ "$numero" -ge 19 ] && [ "$numero" -le 36 ]; then
+        ((diecinueve_treintayseis++))
+    fi
+
+    if [ $((numero % 2)) -eq 0 ]; then
+        ((par++))
+    else
+        ((impar++))
+    fi
+
+    if [ "$numero" -ge 1 ] && [ "$numero" -le 12 ]; then
+        ((docenas[0]++))
+    elif [ "$numero" -ge 13 ] && [ "$numero" -le 24 ]; then
+        ((docenas[1]++))
+    elif [ "$numero" -ge 25 ] && [ "$numero" -le 36 ]; then
+        ((docenas[2]++))
+    fi
+
+    if [ $(( (numero - 1) % 3 )) -eq 0 ]; then
+        ((columnas[0]++))
+    elif [ $(( (numero - 2) % 3 )) -eq 0 ]; then
+        ((columnas[1]++))
+    elif [ $(( (numero - 3) % 3 )) -eq 0 ]; then
+        ((columnas[2]++))
+    fi
+}
+
+function mostrar_estadisticas() {
+    echo "Estadísticas:"
+    echo "  Rojo: $rojo"
+    echo "  Negro: $negro"
+    echo "  1-18: $uno_dieciocho"
+    echo "  19-36: $diecinueve_treintayseis"
+    echo "  Par: $par"
+    echo "  Impar: $impar"
+    echo "  Docenas:"
+    echo "    1-12: ${docenas[0]}"
+    echo "    13-24: ${docenas[1]}"
+    echo "    25-36: ${docenas[2]}"
+    echo "  Columnas:"
+    echo "    1ra: ${columnas[0]}"
+    echo "    2da: ${columnas[1]}"
+    echo "    3ra: ${columnas[2]}"
+}
+
+# Bucle principal para ingresar números
+while true; do
+    read -p "Ingrese un número entre 0 y 36 (Ctrl+C para salir): " numero
+
+    if [[ $numero =~ ^[0-9]+$ ]] && [ "$numero" -ge 0 ] && [ "$numero" -le 36 ]; then
+        echo "Número ingresado: $numero"
+        actualizar_contadores "$numero"
+        mostrar_estadisticas
+    else
+        echo "Número inválido. Por favor, ingrese un número entre 0 y 36."
+    fi
+done
 
 # Este es un programa en Bash que simula un juego de ruleta. El programa comienza pidiéndole al usuario que ingrese la cantidad de dinero que desea jugar y que elija si quiere jugar a par o impar.
 
