@@ -101,17 +101,50 @@ echo "Impar: $contador_respuesta_impar"
 echo "Cantidad de jugadas ganadas: $((contador_respuesta_par + contador_respuesta_impar))"
 echo "Cantidad de jugadas perdidas: $(( ${#jugadas[@]} - contador_respuesta_par - contador_respuesta_impar))"
 
-# Este es un programa en Bash que simula un juego de ruleta. Algunas de las características del programa son:
-    # CERO es par
-
-#     Pide al usuario que ingrese la cantidad de dinero que quiere jugar.
-#     Pide al usuario que elija si quiere jugar a par o impar.
-#     Juega una serie de rondas de ruleta, mostrando el resultado (par o impar) de cada ronda y actualizando la cantidad de dinero del usuario según si ganó o perdió.
-#     Cuando el usuario se queda sin dinero o decide terminar el juego, muestra el resultado final, incluyendo el número total de jugadas ganadas y perdidas, la cantidad de pares e impares, y una lista de todas las jugadas realizadas en orden inverso, indicando si cada una fue par o impar.
-
-# Además, el programa utiliza algunos operadores de comparación en Bash (como -eq y -gt) para realizar comparaciones numéricas y tomar decisiones basadas en ellas. También utiliza algunas estructuras de control de flujo (como el bucle while y los condicionales if) para controlar el flujo del programa según el comportamiento del usuario y los resultados de las jugadas.
 
 
-# Correcto, ese es el código completo del programa que simula un juego de ruleta. Como puedes ver, utiliza varias características del lenguaje Bash, incluyendo la manipulación de arreglos, operadores de comparación y estructuras de control de flujo.
+ganadas_consecutivas=0
+ganancia_consecutiva=0
+perdidas_consecutivas=0
+perdida_consecutiva=0
 
-# Además, el programa muestra una interfaz de usuario interactiva y proporciona estadísticas detalladas al final del juego. En general, es un buen ejemplo de cómo se puede utilizar Bash para crear programas útiles y entretenidos.
+for jugada in ${jugadas[@]}; do
+    if [ $jugada -eq 0 ]; then
+        ((ganadas_consecutivas++))
+        ganancia_consecutiva=$((ganancia_consecutiva + apuesta))
+        perdidas_consecutivas=0
+    else
+        ((perdidas_consecutivas++))
+        perdida_consecutiva=$((perdida_consecutiva + apuesta))
+        ganadas_consecutivas=0
+    fi
+
+    if [ $ganadas_consecutivas -eq 2 ]; then
+        echo "Jugadas ganadas consecutivas: $ganadas_consecutivas - Ganancia: $ganancia_consecutiva"
+        ganancias_consecutivas=$((ganancias_consecutivas + ganancia_consecutiva))
+        ganancia_consecutiva=0
+        ganadas_consecutivas=0
+    fi
+
+    if [ $perdidas_consecutivas -eq 2 ]; then
+        echo "Jugadas perdidas consecutivas: $perdidas_consecutivas - Pérdida: $perdida_consecutiva"
+        perdidas_consecutivas_totales=$((perdidas_consecutivas_totales + perdidas_consecutivas))
+        perdida_consecutiva_total=$((perdida_consecutiva_total + perdida_consecutiva))
+        perdida_consecutiva=0
+        perdidas_consecutivas=0
+    fi
+done
+
+if [ $ganancia_consecutiva -gt 0 ]; then
+    echo "Jugadas ganadas consecutivas: $ganadas_consecutivas - Ganancia: $ganancia_consecutiva"
+    ganancias_consecutivas=$((ganancias_consecutivas + ganancia_consecutiva))
+fi
+
+if [ $perdida_consecutiva -gt 0 ]; then
+    echo "Jugadas perdidas consecutivas: $perdidas_consecutivas - Pérdida: $perdida_consecutiva"
+    perdidas_consecutivas_totales=$((perdidas_consecutivas_totales + perdidas_consecutivas))
+    perdida_consecutiva_total=$((perdida_consecutiva_total + perdida_consecutiva))
+fi
+
+echo "Total de jugadas ganadas consecutivas: $ganancias_consecutivas"
+echo "Total de jugadas perdidas consecutivas: $perdidas_consecutivas_totales"
