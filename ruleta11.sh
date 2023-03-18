@@ -22,15 +22,8 @@ contador_respuesta_impar=0
 
 echo "Bienvenido al juego de la ruleta."
 
-while true; do
-    read -p "Ingresa el dinero que quieres jugar: " dinero
-    if [ $dinero -le 0 ]; then
-        echo "La cantidad ingresada debe ser mayor a cero. Inténtalo de nuevo."
-    else
-        dinero_inicial=$dinero
-        break
-    fi
-done
+read -p "Ingresa el dinero que quieres jugar: " dinero
+dinero_inicial=$dinero
 
 while true; do
     read -p "Quieres jugar a par (p) o impar (i)? " eleccion
@@ -45,16 +38,7 @@ while true; do
     fi
 done
 
-while true; do
-    read -p "Ingresa la cantidad que deseas apostar: " apuesta
-    if [ $apuesta -le 0 ]; then
-        echo "La cantidad ingresada debe ser mayor a cero. Inténtalo de nuevo."
-    elif [ $apuesta -gt $dinero ]; then
-        echo "La cantidad ingresada no puede ser mayor al dinero que tienes disponible. Inténtalo de nuevo."
-    else
-        break
-    fi
-done
+apuesta=10
 
 while [ $dinero -gt 0 ]; do
     respuesta=$((RANDOM % 2))
@@ -63,43 +47,36 @@ while [ $dinero -gt 0 ]; do
         echo "Ha salido Par"
         ((contador_respuesta_par++))
         if [ $eleccion == "p" ]; then
+            apuesta=$((apuesta * 2))
             dinero=$((dinero - apuesta))
             echo "Has perdido. Tu dinero ahora es de $dinero."
             if [ $dinero -eq 0 ]; then
                 break
             fi
+            apuesta=10
         else
             dinero=$((dinero + apuesta))
             echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
         fi
     else
         echo "Ha salido Impar"
         ((contador_respuesta_impar++))
         jugadas+=($respuesta)
-    if [ $eleccion == "i" ]; then
-        dinero=$((dinero + apuesta))
-        echo "Has ganado. Tu dinero ahora es de $dinero."
-        apuesta=10
-    else
-        while true; do
-            read -p "¿Cuánto dinero quieres apostar? " nueva_apuesta
-            if [ $nueva_apuesta -gt $dinero ]; then
-                echo "No puedes apostar más de lo que tienes. Inténtalo de nuevo."
-            elif [ $nueva_apuesta -le 0 ]; then
-                echo "La apuesta debe ser mayor que 0. Inténtalo de nuevo."
-            else
-                apuesta=$nueva_apuesta
+        if [ $eleccion == "i" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        else
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
                 break
             fi
-        done
-        dinero=$((dinero - apuesta))
-        echo "Has perdido. Tu dinero ahora es de $dinero."
-        if [ $dinero -eq 0 ]; then
-            break
+            apuesta=10
         fi
-        apuesta=$((apuesta * 2))
     fi
-fi
 done
 
 echo "Contador de respuestas:"
@@ -107,63 +84,47 @@ echo "Par: $contador_respuesta_par"
 echo "Impar: $contador_respuesta_impar"
 
 echo "Resultados de las jugadas:"
-echo "Jugadas: ${jugadas[*]} "
-for ((i=${#jugadas[@]}-1; i>=0; i--)); do
-if [ ${jugadas[$i]} -eq 0 ]; then
-echo "Jugada $((i+1)): Par"
-else
-echo "Jugada $((i+1)): Impar"
-fi
+echo "Jugadas: ${jugadas[*]}"
+for ((i = ${#jugadas[@]} - 1; i >= 0; i--)); do
+    if [ ${jugadas[$i]} -eq 0 ]; then
+        echo "Jugada $((i + 1)): Par"
+    else
+        echo "Jugada $((i + 1)): Impar"
+    fi
 done | column -t
-# echo "Cantidad de pares: $(grep -o "0" -gt "${jugadas[]}" | wc -l)"
-# echo "Cantidad de impares: $(grep -o "1" -gt "${jugadas[*]}" | wc -l)"
+echo "Cantidad de pares: $(grep -o "0" <<<"${jugadas[*]}" | wc -l)"
+echo "Cantidad de impares: $(grep -o "1" <<<"${jugadas[*]}" | wc -l)"
 echo "Contador de respuestas:"
 echo "Par: $contador_respuesta_par"
 echo "Impar: $contador_respuesta_impar"
 echo "Cantidad de jugadas ganadas: $((contador_respuesta_par + contador_respuesta_impar))"
-echo "Cantidad de jugadas perdidas: $(( ${#jugadas[@]} - contador_respuesta_par - contador_respuesta_impar))"
+echo "Cantidad de jugadas perdidas: $((${#jugadas[@]} - contador_respuesta_par - contador_respuesta_impar))"
 
-ganadas_consecutivas=0
-ganancia_consecutiva=0
-perdidas_consecutivas=0
-perdida_consecutiva=0
+# Calcula el dinero total ganado y perdid
 
-for jugada in ${jugadas[@]}; do
-if [ $jugada -eq 0 ]; then
-((ganadas_consecutivas++))
-ganancia_consecutiva=$((ganancia_consecutiva + apuesta))
-perdidas_consecutivas=0
-else
-((perdidas_consecutivas++))
-perdida_consecutiva=$((perdida_consecutiva + apuesta))
-ganadas_consecutivas=0
-fi
-if [ $ganadas_consecutivas -eq 2 ]; then
-    echo "Jugadas ganadas consecutivas: $ganadas_consecutivas - Ganancia: $ganancia_consecutiva"
-    ganancias_consecutivas=$((ganancias_consecutivas + ganancia_consecutiva))
-    ganancia_consecutiva=0
-    ganadas_consecutivas=0
-fi
+dinero_ganado=$((contador_respuesta_par * 10 + contador_respuesta_impar * 10))
+dinero_perdido=$((dinero_inicial - dinero))
 
-if [ $perdidas_consecutivas -eq 2 ]; then
-    echo "Jugadas perdidas consecutivas: $perdidas_consecutivas - Pérdida: $perdida_consecutiva"
-perdidas_consecutivas_totales=$((perdidas_consecutivas_totales + perdidas_consecutivas))
-perdida_consecutiva_total=$((perdida_consecutiva_total + perdida_consecutiva))
-perdida_consecutiva=0
-perdidas_consecutivas=0
-fi
-done
+# Muestra el resultado final, incluyendo el dinero total ganado y perdido
 
-if [ $ganancia_consecutiva -gt 0 ]; then
-echo "Jugadas ganadas consecutivas: $ganadas_consecutivas - Ganancia: $ganancia_consecutiva"
-ganancias_consecutivas=$((ganancias_consecutivas + ganancia_consecutiva))
-fi
+# Por supuesto, para añadir el dinero de las jugadas ganadas y perdidas y el total final, puedes agregar las siguientes líneas de código al final del programa:
+# Calcula el dinero total ganado y perdido
 
-if [ $perdida_consecutiva -gt 0 ]; then
-echo "Jugadas perdidas consecutivas: $perdidas_consecutivas - Pérdida: $perdida_consecutiva"
-perdidas_consecutivas_totales=$((perdidas_consecutivas_totales + perdidas_consecutivas))
-perdida_consecutiva_total=$((perdida_consecutiva_total + perdida_consecutiva))
-fi
+dinero_ganado=$((contador_respuesta_par * 10 + contador_respuesta_impar * 10))
+dinero_perdido=$((dinero_inicial - dinero))
+Muestra el resultado final, incluyendo el dinero total ganado y perdido
 
-echo "Total de jugadas ganadas consecutivas: $ganancias_consecutivas"
-echo "Total de jugadas perdidas consecutivas: $perdidas_consecutivas_totales"
+echo "Resultado final:"
+echo "Cantidad de jugadas ganadas: $contador_respuesta_par"
+echo "Cantidad de jugadas perdidas: $((${#jugadas[@]} - contador_respuesta_par))"
+echo "Dinero total ganado: $((contador_respuesta_par * 10))"
+echo "Dinero total perdido: $((dinero_inicial - dinero))"
+echo "Tu dinero final es de $dinero."
+
+# Este es un programa en Bash que simula un juego de ruleta. El programa comienza pidiéndole al usuario que ingrese la cantidad de dinero que desea jugar y que elija si quiere jugar a par o impar.
+
+# Luego, el programa juega una serie de rondas de ruleta, mostrando el resultado (par o impar) de cada ronda y actualizando la cantidad de dinero del usuario según si ganó o perdió. El programa utiliza varios operadores de comparación en Bash (como -eq y -gt) para realizar comparaciones numéricas y tomar decisiones basadas en ellas.
+
+# Una vez que el usuario se queda sin dinero o decide terminar el juego, el programa muestra el resultado final, incluyendo el número total de jugadas ganadas y perdidas, la cantidad de pares e impares, y una lista de todas las jugadas realizadas en orden inverso, indicando si cada una fue par o impar.
+
+# Además, el programa calcula el dinero total ganado y perdido y lo muestra junto con el resultado final. En general, es un buen ejemplo de cómo se puede utilizar Bash para crear programas útiles y entretenidos.
