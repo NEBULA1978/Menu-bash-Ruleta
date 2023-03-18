@@ -36,7 +36,7 @@ function helpPanel() {
   echo -e "\n${yellowColour}[+]${endColour}${grayColour} Uso:${endColour}${purpleColour} $0${endColour}\n"
   echo -e "\t${blueColour}-m)${endColour}${grayColour} Dinero con el que desea jugar${endColour}"
   echo -e "\t${blueColour}-t)${endColour} Tecnica de juego a utilizar${endColour}${purpleColour} (${endColour}${yellowColour}martingala${endColour}${blueColour}/${endColour}${yellowColour}inverseLabroucher${endColour}${purpleColour})${endColour}\n"
-  # tput cnorm
+  tput cnorm
   exit 1
 }
 
@@ -51,7 +51,7 @@ function martingala() {
   backup_bet=$initial_bet
   play_counter=1
 
-  # tput civis #Ocultamos el cursor
+  tput civis #Ocultamos el cursor
   while true; do
     money=$(($money - $initial_bet))
     echo -e "\n[+] Acabas de apostar $initial_bet€ y tienes $money€\n"
@@ -120,6 +120,25 @@ inverseLabroucher(){
   my_secuencia=(${my_secuencia[@]})
 
   echo -e "\n[+] Invertimos $bet€ y la secuencia se queda en  [${my_secuencia[@]}]"
+
+  tput civis
+  while true; do
+    random_number="$(($RANDOM % 37))"
+    echo -e "[+] Ha salido el numero: $random_number"
+
+    if [ "$par_impar" == "par" ]; then
+      if [ "$(($random_number % 2))" -eq 0 ];then
+        echo -e "[+] El numero es Par, Ganas"
+      else
+        echo -e "[+] El numero es Impar, !Pierdes!"
+
+      fi
+    fi
+
+  sleep 2
+  done
+
+  tput cnorm
 }
 
 # //////////////////////////////////////////////
