@@ -213,10 +213,10 @@ else
   helpPanel
 fi
 
-# Este código es un script de Bash que se encarga de ejecutar un juego de ruleta, utilizando dos técnicas de apuestas: Martingala e Inversa de Labouchere.
+# Este es un script de Bash que permite jugar a la ruleta usando dos técnicas de juego: martingala e inverseLabroucher. Al inicio del script, se definen varias variables de color para la terminal. Luego se definen varias funciones, incluyendo una función para capturar la señal SIGINT (Ctrl+C) y otra para mostrar el panel de ayuda. Las dos técnicas de juego también se definen como funciones.
 
-# Primero, el script define algunas variables de colores para la salida de texto en la consola, y luego define algunas funciones útiles, como una función para manejar la interrupción de control-c y una función para mostrar el panel de ayuda.
+# Cuando se ejecuta el script, se utiliza el comando getopts para procesar los argumentos de línea de comandos. El usuario debe proporcionar el dinero con el que desea jugar y la técnica que desea utilizar. Si no se proporcionan estos argumentos, se muestra el panel de ayuda.
 
-# Luego, hay dos funciones principales que implementan las dos técnicas de apuestas. La función martingala utiliza la estrategia Martingala, que implica duplicar la apuesta después de cada pérdida, y volver a la apuesta inicial después de cada victoria. La función inverseLabroucher utiliza la estrategia de apuestas inversa de Labouchere, que implica construir una secuencia de números y apostar la suma de los dos extremos después de cada pérdida, y eliminar los extremos de la secuencia después de cada victoria.
+# Si el usuario selecciona la técnica de martingala, se le solicita que elija el número con el que desea apostar (par o impar) y cuánto dinero desea apostar. El script utiliza un bucle while para continuar jugando hasta que el usuario se quede sin dinero o gane 100€. Si el usuario gana una apuesta, su dinero aumenta y la apuesta se restablece a su valor inicial. Si el usuario pierde una apuesta, su apuesta se duplica y su dinero se reduce en consecuencia.
 
-# El código principal del script procesa los argumentos de línea de comandos para obtener la cantidad de dinero con la que se desea jugar y la técnica de apuestas a utilizar, y luego llama a la función correspondiente para ejecutar el juego. Si no se proporcionan argumentos o se proporcionan argumentos incorrectos, se muestra el panel de ayuda.
+# Si el usuario selecciona la técnica de inverseLabroucher, se utiliza una secuencia de números para determinar el tamaño de las apuestas. Después de cada victoria consecutiva, el último número de la secuencia se incrementa en 1 y la apuesta se ajusta en consecuencia. Después de cada derrota, se agrega un nuevo número a la secuencia y la apuesta se ajusta en consecuencia. El usuario debe elegir si quiere apostar a números pares o impares. El juego continúa hasta que el usuario gana 100€ o se queda sin dinero.

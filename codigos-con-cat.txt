@@ -1,0 +1,3952 @@
+# #!/bin/bash
+
+# contador_respuesta_1=0
+# contador_respuesta_2=0
+
+# while true; do
+#     respuesta=$((RANDOM % 2))
+#     if [ $respuesta -eq 0 ]; then
+#         echo "Respuesta 1"
+#         ((contador_respuesta_1++))
+#     else
+#         echo "Respuesta 2"
+#         ((contador_respuesta_2++))
+#     fi
+
+#     read -p "Presione Enter para continuar o escriba 'salir' para terminar: " opcion
+#     if [[ "$opcion" == "salir" ]]; then
+#         echo "Contador de respuestas:"
+#         echo "Respuesta 1: $contador_respuesta_1"
+#         echo "Respuesta 2: $contador_respuesta_2"
+#         break
+#     fi
+# done
+
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+#!/bin/bash
+
+contador_respuesta_1=0
+contador_respuesta_2=0
+
+while true; do
+    respuesta=$((RANDOM % 2))
+    if [ $respuesta -eq 0 ]; then
+        echo "Respuesta 1"
+        ((contador_respuesta_1++))
+    else
+        echo "Respuesta 2"
+        ((contador_respuesta_2++))
+    fi
+
+    sleep $((RANDOM % 3)) # Espera entre 0 y 4 segundos antes de continuar
+
+    opcion=$((RANDOM % 10))
+    if [ $opcion -eq 0 ]; then
+        echo "Saliendo del programa..."
+        echo "Contador de respuestas:"
+        echo "Respuesta 1: $contador_respuesta_1"
+        echo "Respuesta 2: $contador_respuesta_2"
+        break
+    fi
+done
+# En este caso, el programa espera entre 0 y 4 segundos antes de mostrar la siguiente respuesta, y luego genera un número aleatorio entre 0 y 9 para determinar si el programa debe salir. Si el número generado es 0, el programa muestra los contadores y termina.
+
+# Ten en cuenta que si quieres ajustar la duración de la espera o el intervalo de números aleatorios para la opción de salida, puedes cambiar los valores utilizados en las funciones sleep y RANDOM.#!/bin/bash
+
+#   echo "Instalar programa ?¿ introduce si o no"
+
+#         echo -n "Instalar programa? [s/n]: "
+#         read resultado
+
+#         if [[ $resultado == [sS] ]]; then
+#             echo "Instalando programa..."
+#         elif [[ $resultado == [nN] ]]; then
+#             echo "El programa no se va a instalar"
+#         else
+#             echo "Opcion invalida"
+#         fi
+
+contador_si=0
+contador_no=0
+
+while true; do
+    echo -n "Instalar programa? [s/n]: "
+    read resultado
+    
+    if [[ $resultado == [sS] ]]; then
+        echo "Instalando programa..."
+        ((contador_si++))
+    elif [[ $resultado == [nN] ]]; then
+        echo "El programa no se va a instalar"
+        ((contador_no++))
+    else
+        echo "Opcion invalida"
+    fi
+
+    read -p "Presione Enter para continuar o escriba 'salir' para terminar: " opcion
+    if [[ "$opcion" == "salir" ]]; then
+        echo "Contador de respuestas:"
+        echo "Si: $contador_si"
+        echo "No: $contador_no"
+        break
+    fi
+done
+
+# Menu-bash-Ruleta
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+# Muestra el resultado final, incluyendo el dinero total ganado y perdido
+
+# Por supuesto, para añadir el dinero de las jugadas ganadas y perdidas y el total final, puedes agregar las siguientes líneas de código al final del programa:
+# Calcula el dinero total ganado y perdido
+
+///////////////////////////////////////////////////
+
+# Este es un programa en Bash que simula un juego de ruleta. El programa comienza pidiéndole al usuario que ingrese la cantidad de dinero que desea jugar y que elija si quiere jugar a par o impar.
+
+# Luego, el programa juega una serie de rondas de ruleta, mostrando el resultado (par o impar) de cada ronda y actualizando la cantidad de dinero del usuario según si ganó o perdió. El programa utiliza varios operadores de comparación en Bash (como -eq y -gt) para realizar comparaciones numéricas y tomar decisiones basadas en ellas.
+
+# Una vez que el usuario se queda sin dinero o decide terminar el juego, el programa muestra el resultado final, incluyendo el número total de jugadas ganadas y perdidas, la cantidad de pares e impares, y una lista de todas las jugadas realizadas en orden inverso, indicando si cada una fue par o impar.
+
+# Además, el programa calcula el dinero total ganado y perdido y lo muestra junto con el resultado final. En general, es un buen ejemplo de cómo se puede utilizar Bash para crear programas útiles y entretenidos.
+#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+jugadas=()
+contador_respuesta_par=0
+contador_respuesta_impar=0
+
+echo "Bienvenido al juego de la ruleta."
+
+read -p "Ingresa el dinero que quieres jugar: " dinero
+dinero_inicial=$dinero
+
+while true; do
+    read -p "Quieres jugar a par (p) o impar (i)? " eleccion
+    if [ $eleccion == "p" ]; then
+        eleccion_texto="Par"
+        break
+    elif [ $eleccion == "i" ]; then
+        eleccion_texto="Impar"
+        break
+    else
+        echo "Opción inválida. Inténtalo de nuevo."
+    fi
+done
+
+apuesta=10
+
+while [ $dinero -gt 0 ]; do
+    respuesta=$((RANDOM % 2))
+    jugadas+=($respuesta)
+    if [ $respuesta -eq 0 ]; then
+        echo "Ha salido Par"
+        ((contador_respuesta_par++))
+        if [ $eleccion == "p" ]; then
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                break
+            fi
+            apuesta=10
+        else
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        fi
+    else
+        echo "Ha salido Impar"
+        ((contador_respuesta_impar++))
+        jugadas+=($respuesta)
+        if [ $eleccion == "i" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        else
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                break
+            fi
+            apuesta=10
+        fi
+    fi
+done
+
+
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+
+echo "Resultados de las jugadas:"
+echo "Jugadas: ${jugadas[*]}"
+for ((i=${#jugadas[@]}-1; i>=0; i--)); do
+    if [ ${jugadas[$i]} -eq 0 ]; then
+        echo "Jugada $((i+1)): Par"
+    else
+        echo "Jugada $((i+1)): Impar"
+    fi
+done | column -t
+echo "Cantidad de pares: $(grep -o "0" <<< "${jugadas[*]}" | wc -l)"
+echo "Cantidad de impares: $(grep -o "1" <<< "${jugadas[*]}" | wc -l)"
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+echo "Cantidad de jugadas ganadas: $((contador_respuesta_par + contador_respuesta_impar))"
+echo "Cantidad de jugadas perdidas: $(( ${#jugadas[@]} - contador_respuesta_par - contador_respuesta_impar))"
+
+
+
+ganadas_consecutivas=0
+ganancia_consecutiva=0
+perdidas_consecutivas=0
+perdida_consecutiva=0
+
+for jugada in ${jugadas[@]}; do
+    if [ $jugada -eq 0 ]; then
+        ((ganadas_consecutivas++))
+        ganancia_consecutiva=$((ganancia_consecutiva + apuesta))
+        perdidas_consecutivas=0
+    else
+        ((perdidas_consecutivas++))
+        perdida_consecutiva=$((perdida_consecutiva + apuesta))
+        ganadas_consecutivas=0
+    fi
+
+    if [ $ganadas_consecutivas -eq 2 ]; then
+        echo "Jugadas ganadas consecutivas: $ganadas_consecutivas - Ganancia: $ganancia_consecutiva"
+        ganancias_consecutivas=$((ganancias_consecutivas + ganancia_consecutiva))
+        ganancia_consecutiva=0
+        ganadas_consecutivas=0
+    fi
+
+    if [ $perdidas_consecutivas -eq 2 ]; then
+        echo "Jugadas perdidas consecutivas: $perdidas_consecutivas - Pérdida: $perdida_consecutiva"
+        perdidas_consecutivas_totales=$((perdidas_consecutivas_totales + perdidas_consecutivas))
+        perdida_consecutiva_total=$((perdida_consecutiva_total + perdida_consecutiva))
+        perdida_consecutiva=0
+        perdidas_consecutivas=0
+    fi
+done
+
+if [ $ganancia_consecutiva -gt 0 ]; then
+    echo "Jugadas ganadas consecutivas: $ganadas_consecutivas - Ganancia: $ganancia_consecutiva"
+    ganancias_consecutivas=$((ganancias_consecutivas + ganancia_consecutiva))
+fi
+
+if [ $perdida_consecutiva -gt 0 ]; then
+    echo "Jugadas perdidas consecutivas: $perdidas_consecutivas - Pérdida: $perdida_consecutiva"
+    perdidas_consecutivas_totales=$((perdidas_consecutivas_totales + perdidas_consecutivas))
+    perdida_consecutiva_total=$((perdida_consecutiva_total + perdida_consecutiva))
+fi
+
+echo "Total de jugadas ganadas consecutivas: $ganancias_consecutivas"
+echo "Total de jugadas perdidas consecutivas: $perdidas_consecutivas_totales"
+#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+jugadas=()
+contador_respuesta_par=0
+contador_respuesta_impar=0
+
+echo "Bienvenido al juego de la ruleta."
+
+read -p "Ingresa el dinero que quieres jugar: " dinero
+dinero_inicial=$dinero
+
+while true; do
+    read -p "Quieres jugar a par (p) o impar (i)? " eleccion
+    if [ $eleccion == "p" ]; then
+        eleccion_texto="Par"
+        break
+    elif [ $eleccion == "i" ]; then
+        eleccion_texto="Impar"
+        break
+    else
+        echo "Opción inválida. Inténtalo de nuevo."
+    fi
+done
+
+apuesta=10
+
+while [ $dinero -gt 0 ]; do
+    respuesta=$((RANDOM % 2))
+    jugadas+=($respuesta)
+    if [ $respuesta -eq 0 ]; then
+        echo "Ha salido Par"
+        ((contador_respuesta_par++))
+        if [ $eleccion == "p" ]; then
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                break
+            fi
+            apuesta=10
+        else
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        fi
+    else
+        echo "Ha salido Impar"
+        ((contador_respuesta_impar++))
+        jugadas+=($respuesta)
+        if [ $eleccion == "i" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        else
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                break
+            fi
+            apuesta=10
+        fi
+    fi
+done
+
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+
+echo "Resultados de las jugadas:"
+echo "Jugadas: ${jugadas[*]}"
+for ((i = ${#jugadas[@]} - 1; i >= 0; i--)); do
+    if [ ${jugadas[$i]} -eq 0 ]; then
+        echo "Jugada $((i + 1)): Par"
+    else
+        echo "Jugada $((i + 1)): Impar"
+    fi
+done | column -t
+echo "Cantidad de pares: $(grep -o "0" <<<"${jugadas[*]}" | wc -l)"
+echo "Cantidad de impares: $(grep -o "1" <<<"${jugadas[*]}" | wc -l)"
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+echo "Cantidad de jugadas ganadas: $((contador_respuesta_par + contador_respuesta_impar))"
+echo "Cantidad de jugadas perdidas: $((${#jugadas[@]} - contador_respuesta_par - contador_respuesta_impar))"
+
+# Calcula el dinero total ganado y perdid
+
+dinero_ganado=$((contador_respuesta_par * 10 + contador_respuesta_impar * 10))
+dinero_perdido=$((dinero_inicial - dinero))
+
+# Muestra el resultado final, incluyendo el dinero total ganado y perdido
+
+# Por supuesto, para añadir el dinero de las jugadas ganadas y perdidas y el total final, puedes agregar las siguientes líneas de código al final del programa:
+# Calcula el dinero total ganado y perdido
+
+dinero_ganado=$((contador_respuesta_par * 10 + contador_respuesta_impar * 10))
+dinero_perdido=$((dinero_inicial - dinero))
+# Muestra el resultado final, incluyendo el dinero total ganado y perdido
+
+echo "Resultado final:"
+echo "Cantidad de jugadas ganadas: $contador_respuesta_par"
+echo "Cantidad de jugadas perdidas: $((${#jugadas[@]} - contador_respuesta_par))"
+echo "Dinero total ganado: $((contador_respuesta_par * 10))"
+echo "Dinero total perdido: $((dinero_inicial - dinero))"
+echo "Tu dinero final es de $dinero."
+
+# //////////////////////////////////////////////////////////
+# //////////////////////////////////////////////////////////
+
+# Inicializar contadores y variables
+declare -A contador
+numeros_totales=0
+rojo=0
+negro=0
+uno_dieciocho=0
+diecinueve_treintayseis=0
+par=0
+impar=0
+docenas=(0 0 0)
+columnas=(0 0 0)
+
+# Números rojos y negros en la ruleta
+numeros_rojos=(1 3 5 7 9 12 14 16 18 19 21 23 25 27 30 32 34 36)
+numeros_negros=(2 4 6 8 10 11 13 15 17 20 22 24 26 28 29 31 33 35)
+
+function es_rojo() {
+    for num in "${numeros_rojos[@]}"; do
+        if [ "$1" -eq "$num" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+function es_negro() {
+    for num in "${numeros_negros[@]}"; do
+        if [ "$1" -eq "$num" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+function actualizar_contadores() {
+    numero=$1
+    ((contador[$numero]++))
+    ((numeros_totales++))
+
+    if es_rojo "$numero"; then
+        ((rojo++))
+    elif es_negro "$numero"; then
+        ((negro++))
+    fi
+
+    if [ "$numero" -ge 1 ] && [ "$numero" -le 18 ]; then
+        ((uno_dieciocho++))
+    elif [ "$numero" -ge 19 ] && [ "$numero" -le 36 ]; then
+        ((diecinueve_treintayseis++))
+    fi
+
+    if [ $((numero % 2)) -eq 0 ]; then
+        ((par++))
+    else
+        ((impar++))
+    fi
+
+    if [ "$numero" -ge 1 ] && [ "$numero" -le 12 ]; then
+        ((docenas[0]++))
+    elif [ "$numero" -ge 13 ] && [ "$numero" -le 24 ]; then
+        ((docenas[1]++))
+    elif [ "$numero" -ge 25 ] && [ "$numero" -le 36 ]; then
+        ((docenas[2]++))
+    fi
+
+    if [ $(( (numero - 1) % 3 )) -eq 0 ]; then
+        ((columnas[0]++))
+    elif [ $(( (numero - 2) % 3 )) -eq 0 ]; then
+        ((columnas[1]++))
+    elif [ $(( (numero - 3) % 3 )) -eq 0 ]; then
+        ((columnas[2]++))
+    fi
+}
+
+function mostrar_estadisticas() {
+    echo "Estadísticas:"
+    echo "  Rojo: $rojo"
+    echo "  Negro: $negro"
+    echo "  1-18: $uno_dieciocho"
+    echo "  19-36: $diecinueve_treintayseis"
+    echo "  Par: $par"
+    echo "  Impar: $impar"
+    echo "  Docenas:"
+    echo "    1-12: ${docenas[0]}"
+    echo "    13-24: ${docenas[1]}"
+    echo "    25-36: ${docenas[2]}"
+    echo "  Columnas:"
+    echo "    1ra: ${columnas[0]}"
+    echo "    2da: ${columnas[1]}"
+    echo "    3ra: ${columnas[2]}"
+}
+
+# Bucle principal para ingresar números
+while true; do
+    read -p "Ingrese un número entre 0 y 36 (Ctrl+C para salir): " numero
+
+    if [[ $numero =~ ^[0-9]+$ ]] && [ "$numero" -ge 0 ] && [ "$numero" -le 36 ]; then
+        echo "Número ingresado: $numero"
+        actualizar_contadores "$numero"
+        mostrar_estadisticas
+    else
+        echo "Número inválido. Por favor, ingrese un número entre 0 y 36."
+    fi
+done
+
+# Este es un programa en Bash que simula un juego de ruleta. El programa comienza pidiéndole al usuario que ingrese la cantidad de dinero que desea jugar y que elija si quiere jugar a par o impar.
+
+# Luego, el programa juega una serie de rondas de ruleta, mostrando el resultado (par o impar) de cada ronda y actualizando la cantidad de dinero del usuario según si ganó o perdió. El programa utiliza varios operadores de comparación en Bash (como -eq y -gt) para realizar comparaciones numéricas y tomar decisiones basadas en ellas.
+
+# Una vez que el usuario se queda sin dinero o decide terminar el juego, el programa muestra el resultado final, incluyendo el número total de jugadas ganadas y perdidas, la cantidad de pares e impares, y una lista de todas las jugadas realizadas en orden inverso, indicando si cada una fue par o impar.
+
+# Además, el programa calcula el dinero total ganado y perdido y lo muestra junto con el resultado final. En general, es un buen ejemplo de cómo se puede utilizar Bash para crear programas útiles y entretenidos.#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+# ¿En qué consiste este segundo proyecto?
+
+# Existen varias estrategias y técnicas que supuestamente se encargan de ‘vencer‘ a la ruleta de los casinos, alguna de ellas son las siguientes:
+
+#     Martingala
+#     D’Alembert
+#     Secuencia de Fibonacci
+#     Paroli
+#     Óscar Grind
+#     Guetting
+#     Labouchere
+#     Inverse Labouchere
+
+# Hay muchas más, pero estas son las principales y las más comúnmente utilizadas. ¿Cuál es la idea?, como a nosotros nos encanta esto de buscarle las cosquillas a las cosas, vamos a programar 2 de las técnicas más comunes para ver si realmente son eficaces o si al final terminamos perdiendo todo nuestro dinero.
+
+# Para ello tendremos que definir un sistema que nos permita controlar las pérdidas y las ganancias en Bash, haciendo uso para ello de Arrays entre otras cosas. Asimismo, tendremos que definir una lógica que nos permita simular jugadas, con el objetivo de que todo se acontezca de forma automática y nosotros como simples espectadores vayamos atendiendo a las estadísticas y a los resultados obtenidos.
+
+# Va a estar muy interesante y obtendremos datos sorprendentes, ¿será que podemos vencer a la suerte?, ¡vamos a comprobarlo!
+
+#!/bin/bash
+
+# Variables de configuración
+capital_inicial=1000
+capital=$capital_inicial
+apuesta_base=10
+apuesta=$apuesta_base
+numero_de_jugadas=100
+
+# Función para simular una jugada en la ruleta
+ruleta() {
+  numero_aleatorio=$((RANDOM % 37))
+  if [[ $numero_aleatorio -eq 0 ]]; then
+    echo "verde"
+  elif [[ $((numero_aleatorio % 2)) -eq 0 ]]; then
+    echo "rojo"
+  else
+    echo "negro"
+  fi
+}
+
+# Función para simular la estrategia Martingala
+martingala() {
+  local resultado
+  resultado=$(ruleta)
+  if [[ $resultado == "rojo" ]]; then
+    capital=$((capital + apuesta))
+    apuesta=$apuesta_base
+  else
+    capital=$((capital - apuesta))
+    apuesta=$((apuesta * 2))
+  fi
+}
+
+# Simulación de jugadas
+for ((i = 1; i <= numero_de_jugadas; i++)); do
+  if [[ $capital -lt $apuesta ]]; then
+    echo "No hay suficiente capital para seguir apostando. Capital actual: $capital"
+    break
+  fi
+  martingala
+  echo "Jugada $i: Capital = $capital, Apuesta = $apuesta"
+done
+
+# Resultado final
+ganancia=$((capital - capital_inicial))
+echo "Resultado final: Capital inicial = $capital_inicial, Capital final = $capital, Ganancia = $ganancia"
+#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+# ¿En qué consiste este segundo proyecto?
+
+# Existen varias estrategias y técnicas que supuestamente se encargan de ‘vencer‘ a la ruleta de los casinos, alguna de ellas son las siguientes:
+
+#     Martingala
+#     D’Alembert
+#     Secuencia de Fibonacci
+#     Paroli
+#     Óscar Grind
+#     Guetting
+#     Labouchere
+#     Inverse Labouchere
+
+# Hay muchas más, pero estas son las principales y las más comúnmente utilizadas. ¿Cuál es la idea?, como a nosotros nos encanta esto de buscarle las cosquillas a las cosas, vamos a programar 2 de las técnicas más comunes para ver si realmente son eficaces o si al final terminamos perdiendo todo nuestro dinero.
+
+# Para ello tendremos que definir un sistema que nos permita controlar las pérdidas y las ganancias en Bash, haciendo uso para ello de Arrays entre otras cosas. Asimismo, tendremos que definir una lógica que nos permita simular jugadas, con el objetivo de que todo se acontezca de forma automática y nosotros como simples espectadores vayamos atendiendo a las estadísticas y a los resultados obtenidos.
+
+# Va a estar muy interesante y obtendremos datos sorprendentes, ¿será que podemos vencer a la suerte?, ¡vamos a comprobarlo!
+
+
+#!/bin/bash
+
+# Variables de configuración
+capital_inicial=1000
+capital=$capital_inicial
+apuesta_base=10
+apuesta=$apuesta_base
+numero_de_jugadas=100
+
+# Función para simular una jugada en la ruleta
+ruleta() {
+  numero_aleatorio=$((RANDOM % 37))
+  if [[ $numero_aleatorio -eq 0 ]]; then
+    echo "verde"
+  elif [[ $((numero_aleatorio % 2)) -eq 0 ]]; then
+    echo "rojo"
+  else
+    echo "negro"
+  fi
+}
+
+# Función para simular la estrategia Martingala
+martingala() {
+  local resultado
+  resultado=$(ruleta)
+  if [[ $resultado == "rojo" ]]; then
+    capital=$((capital + apuesta))
+    apuesta=$apuesta_base
+  else
+    capital=$((capital - apuesta))
+    apuesta=$((apuesta * 2))
+  fi
+}
+
+# Función para simular la estrategia Fibonacci
+fibonacci() {
+  local resultado
+  resultado=$(ruleta)
+
+  if [[ $resultado == "rojo" ]]; then
+    capital=$((capital + apuesta))
+    fibonacci_index=$((fibonacci_index - 2))
+
+    if [[ $fibonacci_index -lt 0 ]]; then
+      fibonacci_index=0
+    fi
+  else
+    capital=$((capital - apuesta))
+    fibonacci_index=$((fibonacci_index + 1))
+  fi
+
+  apuesta=$(fibonacci_sequencia $fibonacci_index)
+}
+
+# Función para generar la secuencia de Fibonacci
+fibonacci_sequencia() {
+  local indice=$1
+  local a=0
+  local b=1
+
+  for ((i = 0; i < indice; i++)); do
+    local temp=$a
+    a=$b
+    b=$((temp + b))
+  done
+
+  echo $((a * apuesta_base))
+}
+
+# Funciones para calcular y mostrar estadísticas
+calcular_estadisticas() {
+  ganancia=$((capital - capital_inicial))
+  ganancia_porcentaje=$((ganancia * 100 / capital_inicial))
+}
+
+mostrar_estadisticas() {
+  echo "Estrategia: $1"
+  echo "Capital inicial: $capital_inicial"
+  echo "Capital final: $capital"
+  echo "Ganancia: $ganancia"
+  echo "Ganancia en porcentaje: $ganancia_porcentaje%"
+  echo "----------------------------------"
+}
+
+# Simulación de jugadas para diferentes estrategias
+estrategias=("Martingala" "Fibonacci")
+
+for estrategia in "${estrategias[@]}"; do
+  capital=$capital_inicial
+  apuesta=$apuesta_base
+  fibonacci_index=0
+
+  for ((i = 1; i <= numero_de_jugadas; i++)); do
+    if [[ $capital -lt $apuesta ]]; then
+      echo "No hay suficiente capital para seguir apostando. Capital actual: $capital"
+      break
+    fi
+
+    if [[ $estrategia == "Martingala" ]]; then
+      martingala
+    elif [[ $estrategia == "Fibonacci" ]]; then
+      fibonacci
+    fi
+  done
+
+  calcular_estadisticas
+  mostrar_estadisticas "$estrategia"
+done#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+# ¿En qué consiste este segundo proyecto?
+
+# Existen varias estrategias y técnicas que supuestamente se encargan de ‘vencer‘ a la ruleta de los casinos, alguna de ellas son las siguientes:
+
+#     Martingala
+#     D’Alembert
+#     Secuencia de Fibonacci
+#     Paroli
+#     Óscar Grind
+#     Guetting
+#     Labouchere
+#     Inverse Labouchere
+
+# Hay muchas más, pero estas son las principales y las más comúnmente utilizadas. ¿Cuál es la idea?, como a nosotros nos encanta esto de buscarle las cosquillas a las cosas, vamos a programar 2 de las técnicas más comunes para ver si realmente son eficaces o si al final terminamos perdiendo todo nuestro dinero.
+
+# Para ello tendremos que definir un sistema que nos permita controlar las pérdidas y las ganancias en Bash, haciendo uso para ello de Arrays entre otras cosas. Asimismo, tendremos que definir una lógica que nos permita simular jugadas, con el objetivo de que todo se acontezca de forma automática y nosotros como simples espectadores vayamos atendiendo a las estadísticas y a los resultados obtenidos.
+
+# Va a estar muy interesante y obtendremos datos sorprendentes, ¿será que podemos vencer a la suerte?, ¡vamos a comprobarlo!
+
+
+
+
+# Solicitar capital inicial al usuario
+read -p "Ingrese el capital inicial: " capital_inicial
+capital=$capital_inicial
+
+# Preguntar al usuario si desea apostar al par
+read -p "¿Desea apostar al par? (s/n): " apostar_al_par
+if [[ $apostar_al_par == "s" ]]; then
+  apuesta_al_par="par"
+else
+  apuesta_al_par="rojo"
+fi
+
+# Solicitar capital inicial al usuario
+read -p "Ingrese el capital inicial: " apuesta_base
+# Variables de configuración
+apuesta_base=$apuesta_base
+apuesta=$apuesta_base
+numero_de_jugadas=100
+
+# Función para simular una jugada en la ruleta
+ruleta() {
+  numero_aleatorio=$((RANDOM % 37))
+  if [[ $numero_aleatorio -eq 0 ]]; then
+    echo "verde"
+  elif [[ $((numero_aleatorio % 2)) -eq 0 ]]; then
+    echo "par"
+  else
+    echo "impar"
+  fi
+}
+
+# Función para simular la estrategia Martingala
+martingala() {
+  local resultado
+  resultado=$(ruleta)
+  if [[ $resultado == "$apuesta_al_par" ]]; then
+    capital=$((capital + apuesta))
+    apuesta=$apuesta_base
+  else
+    capital=$((capital - apuesta))
+    apuesta=$((apuesta * 2))
+  fi
+}
+
+# Funciones para calcular y mostrar estadísticas
+calcular_estadisticas() {
+  ganancia=$((capital - capital_inicial))
+  ganancia_porcentaje=$((ganancia * 100 / capital_inicial))
+}
+
+mostrar_estadisticas() {
+  echo "Estrategia: $1"
+  echo "Capital inicial: $capital_inicial"
+  echo "Capital final: $capital"
+  echo "Ganancia: $ganancia"
+  echo "Ganancia en porcentaje: $ganancia_porcentaje%"
+  echo "----------------------------------"
+}
+
+# Simulación de jugadas
+for ((i = 1; i <= numero_de_jugadas; i++)); do
+  if [[ $capital -lt $apuesta ]]; then
+    echo "No hay suficiente capital para seguir apostando. Capital actual: $capital"
+    break
+  fi
+
+  martingala
+  echo "Jugada $i: Capital = $capital, Apuesta = $apuesta"
+done
+
+calcular_estadisticas
+mostrar_estadisticas "Martingala"
+#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+# ¿En qué consiste este segundo proyecto?
+
+# Existen varias estrategias y técnicas que supuestamente se encargan de ‘vencer‘ a la ruleta de los casinos, alguna de ellas son las siguientes:
+
+#     Martingala
+#     D’Alembert
+#     Secuencia de Fibonacci
+#     Paroli
+#     Óscar Grind
+#     Guetting
+#     Labouchere
+#     Inverse Labouchere
+
+# Hay muchas más, pero estas son las principales y las más comúnmente utilizadas. ¿Cuál es la idea?, como a nosotros nos encanta esto de buscarle las cosquillas a las cosas, vamos a programar 2 de las técnicas más comunes para ver si realmente son eficaces o si al final terminamos perdiendo todo nuestro dinero.
+
+# Para ello tendremos que definir un sistema que nos permita controlar las pérdidas y las ganancias en Bash, haciendo uso para ello de Arrays entre otras cosas. Asimismo, tendremos que definir una lógica que nos permita simular jugadas, con el objetivo de que todo se acontezca de forma automática y nosotros como simples espectadores vayamos atendiendo a las estadísticas y a los resultados obtenidos.
+
+# Va a estar muy interesante y obtendremos datos sorprendentes, ¿será que podemos vencer a la suerte?, ¡vamos a comprobarlo!
+
+
+#!/bin/bash
+
+# Solicitar capital inicial al usuario
+read -p "Ingrese el capital inicial: " capital_inicial
+capital=$capital_inicial
+
+# Preguntar al usuario si desea apostar al par
+read -p "¿Desea apostar al par? (s/n): " apostar_al_par
+if [[ $apostar_al_par == "s" ]]; then
+  apuesta_al_par="par"
+else
+  apuesta_al_par="rojo"
+fi
+
+# Solicitar secuencia de números al usuario
+read -p "Ingrese la secuencia de números separados por espacios: " secuencia_numeros
+secuencia=($secuencia_numeros)
+numero_de_jugadas=100
+
+# Función para simular una jugada en la ruleta
+ruleta() {
+  numero_aleatorio=$((RANDOM % 37))
+  if [[ $numero_aleatorio -eq 0 ]]; then
+    echo "verde"
+  elif [[ $((numero_aleatorio % 2)) -eq 0 ]]; then
+    echo "par"
+  else
+    echo "impar"
+  fi
+}
+
+# Función para simular la estrategia Inverse Labouchere
+inverse_labouchere() {
+  local resultado
+  resultado=$(ruleta)
+  if [[ $resultado == "$apuesta_al_par" ]]; then
+    capital=$((capital + apuesta))
+    secuencia+=($apuesta)
+  else
+    capital=$((capital - apuesta))
+    secuencia=("${secuencia[@]:1}")
+    if [ ${#secuencia[@]} -eq 0 ]; then
+      secuencia+=($apuesta_base)
+    fi
+  fi
+}
+
+# Funciones para calcular y mostrar estadísticas
+calcular_estadisticas() {
+  ganancia=$((capital - capital_inicial))
+  ganancia_porcentaje=$((ganancia * 100 / capital_inicial))
+}
+
+mostrar_estadisticas() {
+  echo "Estrategia: $1"
+  echo "Capital inicial: $capital_inicial"
+  echo "Capital final: $capital"
+  echo "Ganancia: $ganancia"
+  echo "Ganancia en porcentaje: $ganancia_porcentaje%"
+  echo "----------------------------------"
+}
+
+# Simulación de jugadas
+for ((i = 1; i <= numero_de_jugadas; i++)); do
+  if [ ${#secuencia[@]} -eq 0 ]; then
+    apuesta=$apuesta_base
+  else
+    apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+  fi
+  
+  if [[ $capital -lt $apuesta ]]; then
+    echo "No hay suficiente capital para seguir apostando. Capital actual: $capital"
+    break
+  fi
+
+  inverse_labouchere
+  echo "Jugada $i: Capital = $capital, Apuesta = $apuesta, Secuencia = ${secuencia[*]}"
+done
+
+calcular_estadisticas
+mostrar_estadisticas "Inverse Labouchere"
+
+
+# Este script simula la técnica Inverse Labouchere, en la que se basa en una secuencia de números ingresada por el usuario. La apuesta es igual a la suma del primer y último número de la secuencia. Si se gana, se agrega la apuesta al final de la secuencia; si se pierde, se elimina el primer número de la secuencia. Si la secuencia se vacía, se agrega el valor de la apuesta base.
+
+# Los números que ingreses al principio en la secuencia de la técnica Inverse Labouchere afectarán la cantidad de tu apuesta y cómo evoluciona la secuencia a lo largo de las jugadas. Por lo general, los números deben ser positivos y tener en cuenta el capital inicial y los límites de la mesa de la ruleta.
+
+# Una secuencia de inicio común es una serie de números pequeños como "1 2 3" o "1 2 2 1". Estas secuencias iniciales generarán apuestas más pequeñas al principio, lo que te permitirá jugar más tiempo y minimizar el riesgo de perder rápidamente todo tu capital.
+
+# Recuerda que la técnica Inverse Labouchere, como cualquier otra estrategia de apuestas, no garantiza ganancias a largo plazo. La ruleta es un juego de azar y, a pesar de las estrategias que puedas aplicar, la ventaja siempre está del lado de la casa. Juega de manera responsable y ten en cuenta que el juego debe ser una actividad recreativa y no una fuente de ingresos.#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+# ¿En qué consiste este segundo proyecto?
+
+# Existen varias estrategias y técnicas que supuestamente se encargan de ‘vencer‘ a la ruleta de los casinos, alguna de ellas son las siguientes:
+
+#     Martingala
+#     D’Alembert
+#     Secuencia de Fibonacci
+#     Paroli
+#     Óscar Grind
+#     Guetting
+#     Labouchere
+#     Inverse Labouchere
+
+# Hay muchas más, pero estas son las principales y las más comúnmente utilizadas. ¿Cuál es la idea?, como a nosotros nos encanta esto de buscarle las cosquillas a las cosas, vamos a programar 2 de las técnicas más comunes para ver si realmente son eficaces o si al final terminamos perdiendo todo nuestro dinero.
+
+# Para ello tendremos que definir un sistema que nos permita controlar las pérdidas y las ganancias en Bash, haciendo uso para ello de Arrays entre otras cosas. Asimismo, tendremos que definir una lógica que nos permita simular jugadas, con el objetivo de que todo se acontezca de forma automática y nosotros como simples espectadores vayamos atendiendo a las estadísticas y a los resultados obtenidos.
+
+# Va a estar muy interesante y obtendremos datos sorprendentes, ¿será que podemos vencer a la suerte?, ¡vamos a comprobarlo!
+
+#!/bin/bash
+
+# Solicitar capital inicial al usuario
+read -p "Ingrese el capital inicial: " capital_inicial
+capital=$capital_inicial
+
+# Preguntar al usuario si desea apostar al par
+read -p "¿Desea apostar al par? (s/n): " apostar_al_par
+if [[ $apostar_al_par == "s" ]]; then
+  apuesta_al_par="par"
+else
+  apuesta_al_par="rojo"
+fi
+
+# Solicitar secuencia de números al usuario
+read -p "Ingrese la secuencia de números separados por espacios: " -a secuencia
+
+# Variables de configuración
+numero_de_jugadas=1000
+
+# Función para simular una jugada en la ruleta
+ruleta() {
+  numero_aleatorio=$((RANDOM % 37))
+  if [[ $numero_aleatorio -eq 0 ]]; then
+    echo "verde"
+  elif [[ $((numero_aleatorio % 2)) -eq 0 ]]; then
+    echo "par"
+  else
+    echo "impar"
+  fi
+}
+
+# Función para simular la estrategia Inverse Labouchere
+inverse_labouchere() {
+  local resultado
+  resultado=$(ruleta)
+  if [[ $resultado == "$apuesta_al_par" ]]; then
+    capital=$((capital + apuesta))
+    secuencia+=("$apuesta")
+  else
+    capital=$((capital - apuesta))
+    secuencia=("${secuencia[@]:1}")
+    secuencia=("${secuencia[@]::${#secuencia[@]}-1}")
+  fi
+}
+
+# Funciones para calcular y mostrar estadísticas
+calcular_estadisticas() {
+  ganancia=$((capital - capital_inicial))
+  ganancia_porcentaje=$((ganancia * 100 / capital_inicial))
+}
+
+mostrar_estadisticas() {
+  echo "Estrategia: $1"
+  echo "Capital inicial: $capital_inicial"
+  echo "Capital final: $capital"
+  echo "Ganancia: $ganancia"
+  echo "Ganancia en porcentaje: $ganancia_porcentaje%"
+  echo "----------------------------------"
+}
+
+# Simulación de jugadas
+jugada=0
+while [[ $jugada -lt $numero_de_jugadas && ${#secuencia[@]} -gt 0 ]]; do
+  apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+  if [[ $capital -lt $apuesta ]]; then
+    echo "No hay suficiente capital para seguir apostando. Capital actual: $capital"
+    break
+  fi
+
+  inverse_labouchere
+  jugada=$((jugada + 1))
+  echo "Jugada $jugada: Capital = $capital, Apuesta = $apuesta, Secuencia = ${secuencia[*]}"
+done
+
+calcular_estadisticas
+mostrar_estadisticas "Inverse Labouchere"
+
+# RESULTADO POR CONSOLA
+
+# ./ruleta16.sh
+# Ingrese el capital inicial: 10000000
+# ¿Desea apostar al par? (s/n): s
+# Ingrese la secuencia de números separados por espacios: 1 2 1 1
+# Jugada 1: Capital = 10000002, Apuesta = 2, Secuencia = 1 2 1 1 2
+# Jugada 2: Capital = 9999999, Apuesta = 3, Secuencia = 2 1 1
+# Jugada 3: Capital = 10000002, Apuesta = 3, Secuencia = 2 1 1 3
+# Jugada 4: Capital = 10000007, Apuesta = 5, Secuencia = 2 1 1 3 5
+# Jugada 5: Capital = 10000014, Apuesta = 7, Secuencia = 2 1 1 3 5 7
+# Jugada 6: Capital = 10000005, Apuesta = 9, Secuencia = 1 1 3 5
+# Jugada 7: Capital = 10000011, Apuesta = 6, Secuencia = 1 1 3 5 6
+# Jugada 8: Capital = 10000004, Apuesta = 7, Secuencia = 1 3 5
+# Jugada 9: Capital = 10000010, Apuesta = 6, Secuencia = 1 3 5 6
+# Jugada 10: Capital = 10000003, Apuesta = 7, Secuencia = 3 5
+# Jugada 11: Capital = 9999995, Apuesta = 8, Secuencia = 
+# Estrategia: Inverse Labouchere
+# Capital inicial: 10000000
+# Capital final: 9999995
+# Ganancia: -5
+# Ganancia en porcentaje: 0%
+# ----------------------------------#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+# ¿En qué consiste este segundo proyecto?
+
+# Existen varias estrategias y técnicas que supuestamente se encargan de ‘vencer‘ a la ruleta de los casinos, alguna de ellas son las siguientes:
+
+#     Martingala
+#     D’Alembert
+#     Secuencia de Fibonacci
+#     Paroli
+#     Óscar Grind
+#     Guetting
+#     Labouchere
+#     Inverse Labouchere
+
+# Hay muchas más, pero estas son las principales y las más comúnmente utilizadas. ¿Cuál es la idea?, como a nosotros nos encanta esto de buscarle las cosquillas a las cosas, vamos a programar 2 de las técnicas más comunes para ver si realmente son eficaces o si al final terminamos perdiendo todo nuestro dinero.
+
+# Para ello tendremos que definir un sistema que nos permita controlar las pérdidas y las ganancias en Bash, haciendo uso para ello de Arrays entre otras cosas. Asimismo, tendremos que definir una lógica que nos permita simular jugadas, con el objetivo de que todo se acontezca de forma automática y nosotros como simples espectadores vayamos atendiendo a las estadísticas y a los resultados obtenidos.
+
+# Va a estar muy interesante y obtendremos datos sorprendentes, ¿será que podemos vencer a la suerte?, ¡vamos a comprobarlo!
+#!/bin/bash
+
+# Solicitar capital inicial al usuario
+read -p "Ingrese el capital inicial: " capital_inicial
+capital=$capital_inicial
+
+# Preguntar al usuario si desea apostar al par
+read -p "¿Desea apostar al par? (s/n): " apostar_al_par
+if [[ $apostar_al_par == "s" ]]; then
+  apuesta_al_par="par"
+else
+  apuesta_al_par="rojo"
+fi
+
+# Secuencia de Fibonacci
+fibonacci=(1 1)
+
+# Variables de configuración
+numero_de_jugadas=1000
+
+# Función para simular una jugada en la ruleta
+ruleta() {
+  numero_aleatorio=$((RANDOM % 37))
+  if [[ $numero_aleatorio -eq 0 ]]; then
+    echo "verde"
+  elif [[ $((numero_aleatorio % 2)) -eq 0 ]]; then
+    echo "par"
+  else
+    echo "impar"
+  fi
+}
+
+# Función para simular la estrategia Inverse Fibonacci
+inverse_fibonacci() {
+  local resultado
+  resultado=$(ruleta)
+  if [[ $resultado == "$apuesta_al_par" ]]; then
+    capital=$((capital + apuesta))
+    fibonacci+=("$apuesta")
+  else
+    capital=$((capital - apuesta))
+    if [[ ${#fibonacci[@]} -ge 2 ]]; then
+      fibonacci=("${fibonacci[@]:0:${#fibonacci[@]}-2}")
+    fi
+  fi
+}
+
+
+# Funciones para calcular y mostrar estadísticas
+calcular_estadisticas() {
+  ganancia=$((capital - capital_inicial))
+  ganancia_porcentaje=$((ganancia * 100 / capital_inicial))
+}
+
+mostrar_estadisticas() {
+  echo "Estrategia: $1"
+  echo "Capital inicial: $capital_inicial"
+  echo "Capital final: $capital"
+  echo "Ganancia: $ganancia"
+  echo "Ganancia en porcentaje: $ganancia_porcentaje%"
+  echo "----------------------------------"
+}
+
+# Simulación de jugadas
+jugada=0
+while [[ $jugada -lt $numero_de_jugadas && ${#fibonacci[@]} -gt 0 ]]; do
+  apuesta=${fibonacci[-1]}
+  if [[ $capital -lt $apuesta ]]; then
+    echo "No hay suficiente capital para seguir apostando. Capital actual: $capital"
+    break
+  fi
+
+  inverse_fibonacci
+  jugada=$((jugada + 1))
+  echo "Jugada $jugada: Capital = $capital, Apuesta = $apuesta, Secuencia = ${fibonacci[*]}"
+done
+
+calcular_estadisticas
+mostrar_estadisticas "Inverse Fibonacci"
+
+# RESULTADO
+
+# ./ruleta17.sh
+# Ingrese el capital inicial: 1000
+# ¿Desea apostar al par? (s/n): s
+# Jugada 1: Capital = 1001, Apuesta = 1, Secuencia = 1 1 1
+# Jugada 2: Capital = 1000, Apuesta = 1, Secuencia = 1
+# Jugada 3: Capital = 999, Apuesta = 1, Secuencia = 1
+# Jugada 4: Capital = 1000, Apuesta = 1, Secuencia = 1 1
+# Jugada 5: Capital = 1001, Apuesta = 1, Secuencia = 1 1 1
+# Jugada 6: Capital = 1002, Apuesta = 1, Secuencia = 1 1 1 1
+# Jugada 7: Capital = 1003, Apuesta = 1, Secuencia = 1 1 1 1 1
+# Jugada 8: Capital = 1002, Apuesta = 1, Secuencia = 1 1 1
+# Jugada 9: Capital = 1001, Apuesta = 1, Secuencia = 1
+# Jugada 10: Capital = 1002, Apuesta = 1, Secuencia = 1 1
+# Jugada 11: Capital = 1003, Apuesta = 1, Secuencia = 1 1 1
+# Jugada 12: Capital = 1002, Apuesta = 1, Secuencia = 1
+# Jugada 13: Capital = 1003, Apuesta = 1, Secuencia = 1 1
+# Jugada 14: Capital = 1002, Apuesta = 1, Secuencia = 
+# Estrategia: Inverse Fibonacci
+# Capital inicial: 1000
+# Capital final: 1002
+# Ganancia: 2
+# Ganancia en porcentaje: 0%
+# ----------------------------------#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+# ¿En qué consiste este segundo proyecto?
+
+# Existen varias estrategias y técnicas que supuestamente se encargan de ‘vencer‘ a la ruleta de los casinos, alguna de ellas son las siguientes:
+
+#     Martingala
+#     D’Alembert
+#     Secuencia de Fibonacci
+#     Paroli
+#     Óscar Grind
+#     Guetting
+#     Labouchere
+#     Inverse Labouchere
+
+# Hay muchas más, pero estas son las principales y las más comúnmente utilizadas. ¿Cuál es la idea?, como a nosotros nos encanta esto de buscarle las cosquillas a las cosas, vamos a programar 2 de las técnicas más comunes para ver si realmente son eficaces o si al final terminamos perdiendo todo nuestro dinero.
+
+# Para ello tendremos que definir un sistema que nos permita controlar las pérdidas y las ganancias en Bash, haciendo uso para ello de Arrays entre otras cosas. Asimismo, tendremos que definir una lógica que nos permita simular jugadas, con el objetivo de que todo se acontezca de forma automática y nosotros como simples espectadores vayamos atendiendo a las estadísticas y a los resultados obtenidos.
+
+# Va a estar muy interesante y obtendremos datos sorprendentes, ¿será que podemos vencer a la suerte?, ¡vamos a comprobarlo!
+
+
+#!/bin/bash
+
+# Solicitar capital inicial al usuario
+read -p "Ingrese el capital inicial: " capital_inicial
+capital=$capital_inicial
+
+# Preguntar al usuario si desea apostar al par
+read -p "¿Desea apostar al par? (s/n): " apostar_al_par
+if [[ $apostar_al_par == "s" ]]; then
+  apuesta_al_par="par"
+else
+  apuesta_al_par="rojo"
+fi
+
+# Variables de configuración
+numero_de_jugadas=1000
+apuesta_inicial=1
+
+# Función para simular una jugada en la ruleta
+ruleta() {
+  numero_aleatorio=$((RANDOM % 37))
+  if [[ $numero_aleatorio -eq 0 ]]; then
+    echo "verde"
+  elif [[ $((numero_aleatorio % 2)) -eq 0 ]]; then
+    echo "par"
+  else
+    echo "impar"
+  fi
+}
+
+# Función para simular la estrategia Paroli
+paroli() {
+  local resultado
+  resultado=$(ruleta)
+  if [[ $resultado == "$apuesta_al_par" ]]; then
+    capital=$((capital + apuesta))
+    apuesta=$((apuesta * 2))
+  else
+    capital=$((capital - apuesta))
+    apuesta=$apuesta_inicial
+  fi
+}
+
+# Funciones para calcular y mostrar estadísticas
+calcular_estadisticas() {
+  ganancia=$((capital - capital_inicial))
+  ganancia_porcentaje=$((ganancia * 100 / capital_inicial))
+}
+
+mostrar_estadisticas() {
+  echo "Estrategia: $1"
+  echo "Capital inicial: $capital_inicial"
+  echo "Capital final: $capital"
+  echo "Ganancia: $ganancia"
+  echo "Ganancia en porcentaje: $ganancia_porcentaje%"
+  echo "----------------------------------"
+}
+
+# Simulación de jugadas
+jugada=0
+apuesta=$apuesta_inicial
+while [[ $jugada -lt $numero_de_jugadas && $capital -ge $apuesta ]]; do
+  paroli
+  jugada=$((jugada + 1))
+  echo "Jugada $jugada: Capital = $capital, Apuesta = $apuesta"
+done
+
+calcular_estadisticas
+mostrar_estadisticas "Paroli"
+
+# En esta versión del código, se ha eliminado la solicitud de la secuencia de números al usuario y se ha establecido una apuesta inicial de 1. Además, se ha agregado la función paroli() para implementar la estrategia Paroli.
+
+# En la función paroli(), la apuesta se duplica después de cada victoria y se restablece a la apuesta inicial después de cada pérdida. El bucle principal del script se ejecuta mientras el número de jugadas es menor que el número de jugadas especificado y el capital es suficiente para hacer la apuesta actual.
+
+# En resumen, este script utiliza la estrategia Paroli en la ruleta y simula
+
+# RESULTADO POR CONSOLA
+
+# ./ruleta18.sh
+# Ingrese el capital inicial: 10
+# ¿Desea apostar al par? (s/n): s
+# Jugada 1: Capital = 11, Apuesta = 2
+# Jugada 2: Capital = 13, Apuesta = 4
+# Jugada 3: Capital = 17, Apuesta = 8
+# Jugada 4: Capital = 9, Apuesta = 1
+# Jugada 5: Capital = 8, Apuesta = 1
+# Jugada 6: Capital = 7, Apuesta = 1
+# Jugada 7: Capital = 8, Apuesta = 2
+# Jugada 8: Capital = 6, Apuesta = 1
+# Jugada 9: Capital = 7, Apuesta = 2
+# Jugada 10: Capital = 5, Apuesta = 1
+# Jugada 11: Capital = 4, Apuesta = 1
+# Jugada 12: Capital = 3, Apuesta = 1
+# Jugada 13: Capital = 2, Apuesta = 1
+# Jugada 14: Capital = 1, Apuesta = 1
+# Jugada 15: Capital = 0, Apuesta = 1
+# Estrategia: Paroli
+# Capital inicial: 10
+# Capital final: 0
+# Ganancia: -10
+# Ganancia en porcentaje: -100%
+# ----------------------------------#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+# ¿En qué consiste este segundo proyecto?
+
+# Existen varias estrategias y técnicas que supuestamente se encargan de ‘vencer‘ a la ruleta de los casinos, alguna de ellas son las siguientes:
+
+#     Martingala
+#     D’Alembert
+#     Secuencia de Fibonacci
+#     Paroli
+#     Óscar Grind
+#     Guetting
+#     Labouchere
+#     Inverse Labouchere
+# Para un ejemplo de cómo se pueden aplicar los conceptos anteriores en la ruleta, se podría crear un programa que simule las apuestas de un jugador en la ruleta. En este caso, se podría utilizar un array para almacenar los números en los que el jugador apuesta y luego iterar sobre los elementos del array para realizar las operaciones necesarias.
+
+# Por ejemplo, supongamos que el jugador apuesta en los números 3, 14 y 27. Se podría crear un array que contenga estos números de la siguiente manera:
+
+# css
+
+# apuestas = [3, 14, 27]
+
+# A continuación, se podría iterar sobre los elementos del array para determinar si el jugador gana o pierde. Para hacer esto, se podría utilizar una función que genere un número aleatorio entre 0 y 36 (que es el rango de números en la ruleta). Si el número generado coincide con uno de los números en los que el jugador apostó, se considera una victoria y se aplica una operatoria para determinar el pago.
+
+# Por ejemplo, si el jugador apuesta $10 en cada número y el número ganador es 14, se podría aplicar una operatoria para calcular el pago:
+
+# makefile
+
+# pago = 10 * 35  # 35-1 pago en la ruleta europea
+
+# Si el jugador pierde, se podría eliminar el número de la apuesta y recomponer el array. Por ejemplo, si el número ganador es 21, se podría eliminar el número 14 del array y recomponerlo de la siguiente manera:
+
+# scss
+
+# apuestas.remove(14)
+# apuestas.append(21)
+
+# En resumen, se pueden aplicar los conceptos de arrays, iteración, operatorias y eliminación y recomposición de elementos para simular las apuestas de un jugador en la ruleta.
+
+
+# Hay muchas más, pero estas son las principales y las más comúnmente utilizadas. ¿Cuál es la idea?, como a nosotros nos encanta esto de buscarle las cosquillas a las cosas, vamos a programar 2 de las técnicas más comunes para ver si realmente son eficaces o si al final terminamos perdiendo todo nuestro dinero.
+
+# Para ello tendremos que definir un sistema que nos permita controlar las pérdidas y las ganancias en Bash, haciendo uso para ello de Arrays entre otras cosas. Asimismo, tendremos que definir una lógica que nos permita simular jugadas, con el objetivo de que todo se acontezca de forma automática y nosotros como simples espectadores vayamos atendiendo a las estadísticas y a los resultados obtenidos.
+
+# Va a estar muy interesante y obtendremos datos sorprendentes, ¿será que podemos vencer a la suerte?, ¡vamos a comprobarlo!
+
+# La estrategia Oscar's Grind es una estrategia de apuestas que se utiliza comúnmente en juegos de casino como la ruleta. En esta estrategia, el jugador aumenta su apuesta después de cada victoria y mantiene la misma apuesta después de cada pérdida. El objetivo de la estrategia es ganar una unidad de apuesta después de cada ciclo de apuestas ganadoras y, finalmente, obtener una ganancia neta.
+
+#!/bin/bash
+
+# Solicitar capital inicial al usuario
+read -p "Ingrese el capital inicial: " capital_inicial
+capital=$capital_inicial
+
+# Preguntar al usuario si desea apostar al par
+read -p "¿Desea apostar al par? (s/n): " apostar_al_par
+if [[ $apostar_al_par == "s" ]]; then
+  apuesta_al_par="par"
+else
+  apuesta_al_par="rojo"
+fi
+
+# Variables de configuración
+numero_de_jugadas=1000
+apuesta_inicial=1
+objetivo_de_ganancia=10
+
+# Función para simular una jugada en la ruleta
+ruleta() {
+  numero_aleatorio=$((RANDOM % 37))
+  if [[ $numero_aleatorio -eq 0 ]]; then
+    echo "verde"
+  elif [[ $((numero_aleatorio % 2)) -eq 0 ]]; then
+    echo "par"
+  else
+    echo "impar"
+  fi
+}
+
+# Función para simular la estrategia Oscar's Grind
+oscars_grind() {
+  local resultado
+  resultado=$(ruleta)
+  if [[ $resultado == "$apuesta_al_par" ]]; then
+    capital=$((capital + apuesta))
+    if [[ $capital -ge $objetivo_de_ganancia ]]; then
+      apuesta=$apuesta_inicial
+    else
+      apuesta=$((apuesta + 1))
+    fi
+  else
+    capital=$((capital - apuesta))
+    apuesta=$apuesta_inicial
+  fi
+}
+
+# Funciones para calcular y mostrar estadísticas
+calcular_estadisticas() {
+  ganancia=$((capital - capital_inicial))
+  ganancia_porcentaje=$((ganancia * 100 / capital_inicial))
+}
+
+mostrar_estadisticas() {
+  echo "Estrategia: $1"
+  echo "Capital inicial: $capital_inicial"
+  echo "Capital final: $capital"
+  echo "Ganancia: $ganancia"
+  echo "Ganancia en porcentaje: $ganancia_porcentaje%"
+  echo "----------------------------------"
+}
+
+# Simulación de jugadas
+jugada=0
+apuesta=$apuesta_inicial
+while [[ $jugada -lt $numero_de_jugadas && $capital -ge $apuesta ]]; do
+  oscars_grind
+  jugada=$((jugada + 1))
+  echo "Jugada $jugada: Capital = $capital, Apuesta = $apuesta"
+done
+
+calcular_estadisticas
+mostrar_estadisticas "Oscar's Grind"
+
+# ./ruleta19.sh
+# Ingrese el capital inicial: 10
+# ¿Desea apostar al par? (s/n): s
+# Jugada 1: Capital = 9, Apuesta = 1
+# Jugada 2: Capital = 10, Apuesta = 1
+# Jugada 3: Capital = 11, Apuesta = 1
+# Jugada 4: Capital = 12, Apuesta = 1
+# Jugada 5: Capital = 11, Apuesta = 1
+# Jugada 6: Capital = 12, Apuesta = 1
+# Jugada 7: Capital = 11, Apuesta = 1
+# Jugada 8: Capital = 10, Apuesta = 1
+# Jugada 9: Capital = 11, Apuesta = 1
+# Jugada 10: Capital = 12, Apuesta = 1
+# Jugada 11: Capital = 11, Apuesta = 1
+# Jugada 12: Capital = 12, Apuesta = 1
+# Jugada 13: Capital = 13, Apuesta = 1
+# Jugada 14: Capital = 14, Apuesta = 1
+# Jugada 15: Capital = 15, Apuesta = 1
+# Jugada 16: Capital = 16, Apuesta = 1
+# Jugada 17: Capital = 15, Apuesta = 1
+# Jugada 18: Capital = 14, Apuesta = 1
+# Jugada 19: Capital = 13, Apuesta = 1
+# Jugada 20: Capital = 12, Apuesta = 1
+# Jugada 21: Capital = 11, Apuesta = 1
+# Jugada 22: Capital = 12, Apuesta = 1
+# Jugada 23: Capital = 13, Apuesta = 1
+# Jugada 24: Capital = 14, Apuesta = 1
+# Jugada 25: Capital = 13, Apuesta = 1
+# Jugada 26: Capital = 14, Apuesta = 1
+# Jugada 27: Capital = 15, Apuesta = 1
+# Jugada 28: Capital = 14, Apuesta = 1
+# Jugada 29: Capital = 15, Apuesta = 1
+# Jugada 30: Capital = 14, Apuesta = 1
+# Jugada 31: Capital = 13, Apuesta = 1
+# Jugada 32: Capital = 14, Apuesta = 1
+# Jugada 33: Capital = 13, Apuesta = 1
+# Jugada 34: Capital = 14, Apuesta = 1
+# Jugada 35: Capital = 13, Apuesta = 1
+# Jugada 36: Capital = 14, Apuesta = 1
+# Jugada 37: Capital = 13, Apuesta = 1
+# Jugada 38: Capital = 12, Apuesta = 1
+# Jugada 39: Capital = 11, Apuesta = 1
+# Jugada 40: Capital = 10, Apuesta = 1
+# Jugada 41: Capital = 9, Apuesta = 1
+# Jugada 42: Capital = 8, Apuesta = 1
+# Jugada 43: Capital = 9, Apuesta = 2
+# Jugada 44: Capital = 11, Apuesta = 1
+# Jugada 45: Capital = 10, Apuesta = 1
+# Jugada 46: Capital = 9, Apuesta = 1
+# Jugada 47: Capital = 8, Apuesta = 1
+# Jugada 48: Capital = 9, Apuesta = 2
+# Jugada 49: Capital = 7, Apuesta = 1
+# Jugada 50: Capital = 6, Apuesta = 1
+# Jugada 51: Capital = 7, Apuesta = 2
+# Jugada 52: Capital = 5, Apuesta = 1
+# Jugada 53: Capital = 4, Apuesta = 1
+# Jugada 54: Capital = 5, Apuesta = 2
+# Jugada 55: Capital = 3, Apuesta = 1
+# Jugada 56: Capital = 2, Apuesta = 1
+# Jugada 57: Capital = 3, Apuesta = 2
+# Jugada 58: Capital = 5, Apuesta = 3
+# Jugada 59: Capital = 8, Apuesta = 4
+# Jugada 60: Capital = 4, Apuesta = 1
+# Jugada 61: Capital = 3, Apuesta = 1
+# Jugada 62: Capital = 2, Apuesta = 1
+# Jugada 63: Capital = 3, Apuesta = 2
+# Jugada 64: Capital = 1, Apuesta = 1
+# Jugada 65: Capital = 0, Apuesta = 1
+# Estrategia: Oscar's Grind
+# Capital inicial: 10
+# Capital final: 0
+# Ganancia: -10
+# Ganancia en porcentaje: -100%
+# ----------------------------------#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+
+contador_respuesta_par=0
+contador_respuesta_impar=0
+
+echo "Bienvenido al juego de la ruleta."
+
+read -p "Ingresa el dinero que quieres jugar: " dinero
+dinero_inicial=$dinero
+
+while true; do
+    read -p "Quieres jugar a par (p) o impar (i)? " eleccion
+    if [ $eleccion == "p" ]; then
+        eleccion_texto="Par"
+    elif [ $eleccion == "i" ]; then
+        eleccion_texto="Impar"
+    else
+        echo "Opción inválida. Inténtalo de nuevo."
+        continue
+    fi
+
+    read -p "Ingresa la cantidad que quieres apostar: " apuesta
+    if [ $apuesta -le 0 ] || [ $apuesta -gt $dinero ]; then
+        echo "Cantidad inválida. Inténtalo de nuevo."
+        continue
+    fi
+
+    respuesta=$((RANDOM % 2))
+    if [ $respuesta -eq 0 ]; then
+        echo "Ha salido Par"
+        ((contador_respuesta_par++))
+        if [ $eleccion == "p" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=$dinero_inicial
+        else
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                echo "Te has quedado sin dinero. Fin del juego."
+                break
+            fi
+            apuesta=$((apuesta * 2))
+        fi
+    else
+        echo "Ha salido Impar"
+        ((contador_respuesta_impar++))
+        if [ $eleccion == "i" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=$dinero_inicial
+        else
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                echo "Te has quedado sin dinero. Fin del juego."
+                break
+            fi
+            apuesta=$((apuesta * 2))
+        fi
+    fi
+done
+
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+
+¡Claro! Puedes modificar el código para que el juego funcione como lo has descrito. Aquí te muestro cómo podrías hacerlo:
+
+bash
+
+contador_respuesta_par=0
+contador_respuesta_impar=0
+
+echo "Bienvenido al juego de la ruleta."
+
+read -p "Ingresa el dinero que quieres jugar: " dinero
+dinero_inicial=$dinero
+
+while true; do
+    read -p "Quieres jugar a par (p) o impar (i)? " eleccion
+    if [ $eleccion == "p" ]; then
+        eleccion_texto="Par"
+    elif [ $eleccion == "i" ]; then
+        eleccion_texto="Impar"
+    else
+        echo "Opción inválida. Inténtalo de nuevo."
+        continue
+    fi
+
+    read -p "Ingresa la cantidad que quieres apostar: " apuesta
+    if [ $apuesta -le 0 ] || [ $apuesta -gt $dinero ]; then
+        echo "Cantidad inválida. Inténtalo de nuevo."
+        continue
+    fi
+
+    respuesta=$((RANDOM % 2))
+    if [ $respuesta -eq 0 ]; then
+        echo "Ha salido Par"
+        ((contador_respuesta_par++))
+        if [ $eleccion == "p" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=$dinero_inicial
+        else
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                echo "Te has quedado sin dinero. Fin del juego."
+                break
+            fi
+            apuesta=$((apuesta * 2))
+        fi
+    else
+        echo "Ha salido Impar"
+        ((contador_respuesta_impar++))
+        if [ $eleccion == "i" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=$dinero_inicial
+        else
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                echo "Te has quedado sin dinero. Fin del juego."
+                break
+            fi
+            apuesta=$((apuesta * 2))
+        fi
+    fi
+done
+
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+
+# En este caso, hemos añadido varias características nuevas al juego:
+
+#     Al inicio del juego, le preguntamos al usuario cuánto dinero quiere jugar y lo almacenamos en la variable dinero. También guardamos este valor en la variable dinero_inicial para poder volver a la apuesta inicial cuando ganamos.
+
+#     Dentro del ciclo while, le pedimos al usuario que elija si quiere jugar a par o impar. Si elige una opción inválida, le pedimos que lo intente de nuevo. También le pedimos que ingrese la cantidad que quiere apostar. Si la cantidad es inválida, le pedimos que lo intente de nuevo.
+
+#     Después de obtener la elección del usuario y la cantidad apostada, generamos un número aleatorio y comparamos si es par o impar. #!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+contador_respuesta_par=0
+contador_respuesta_impar=0
+
+echo "Bienvenido al juego de la ruleta."
+
+read -p "Ingresa el dinero que quieres jugar: " dinero
+dinero_inicial=$dinero
+
+read -p "Quieres jugar a par (p) o impar (i)? " eleccion
+if [ $eleccion == "p" ]; then
+    eleccion_texto="Par"
+elif [ $eleccion == "i" ]; then
+    eleccion_texto="Impar"
+else
+    echo "Opción inválida. Fin del juego."
+    exit
+fi
+
+while true; do
+    apuesta=$dinero_inicial
+
+    respuesta=$((RANDOM % 2))
+    if [ $respuesta -eq 0 ]; then
+        echo "Ha salido Par"
+        ((contador_respuesta_par++))
+        if [ $eleccion == "p" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+        else
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                echo "Te has quedado sin dinero. Fin del juego."
+                break
+            fi
+        fi
+    else
+        echo "Ha salido Impar"
+        ((contador_respuesta_impar++))
+        if [ $eleccion == "i" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+        else
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                echo "Te has quedado sin dinero. Fin del juego."
+                break
+            fi
+        fi
+    fi
+done
+
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+contador_respuesta_par=0
+contador_respuesta_impar=0
+
+echo "Bienvenido al juego de la ruleta."
+
+read -p "Ingresa el dinero que quieres jugar: " dinero
+dinero_inicial=$dinero
+
+while true; do
+    read -p "Quieres jugar a par (p) o impar (i)? " eleccion
+    if [ $eleccion == "p" ]; then
+        eleccion_texto="Par"
+        break
+    elif [ $eleccion == "i" ]; then
+        eleccion_texto="Impar"
+        break
+    else
+        echo "Opción inválida. Inténtalo de nuevo."
+    fi
+done
+
+apuesta=10
+
+while true; do
+    respuesta=$((RANDOM % 2))
+    if [ $respuesta -eq 0 ]; then
+        echo "Ha salido Par"
+        ((contador_respuesta_par++))
+        if [ $eleccion == "p" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        else
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                echo "Te has quedado sin dinero. Fin del juego."
+                break
+            fi
+        fi
+    else
+        echo "Ha salido Impar"
+        ((contador_respuesta_impar++))
+        apuesta=$((apuesta * 2))
+        dinero=$((dinero - apuesta))
+        echo "Has perdido. Tu dinero ahora es de $dinero."
+        if [ $dinero -eq 0 ]; then
+            echo "Te has quedado sin dinero. Fin del juego."
+            break
+        fi
+    fi
+done
+
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+
+# NO PARA CON -0
+
+# En este caso, hemos incluido una pregunta al inicio del script que le permite al usuario elegir entre jugar a par o a impar. Si el usuario elige una opción inválida, se le pedirá que lo intente de nuevo. Si el usuario elige una opción válida, se establece la elección del usuario en la variable eleccion y se rompe el ciclo con break.
+
+# Luego, el código sigue funcionando como en el ejemplo anterior. El usuario jugará siempre a la opción que haya elegido al comienzo del juego y siempre apostará el doble de su apuesta anterior cuando pierda. Esto seguirá sucediendo hasta que el usuario se quede sin dinero o decida salir del juego. Al final, se muestra el contador de respuestas para cada opción.#!/bin/bash
+
+#Colours
+greenColour="\e[0;32m\033[1m"
+endColour="\033[0m\e[0m"
+redColour="\e[0;31m\033[1m"
+blueColour="\e[0;34m\033[1m"
+yellowColour="\e[0;33m\033[1m"
+purpleColour="\e[0;35m\033[1m"
+turquoiseColour="\e[0;36m\033[1m"
+grayColour="\e[0;37m\033[1m"
+
+
+function controlC(){
+    # Parametro -e para que me aplique los saltos de linea
+    echo -e "\n\n${redColour}[!] Saliendo...${endColour}\n"
+  # Codigo de estado no exitoso
+    exit 1  
+}
+
+# controlC
+# Para capturr el atajo de teclado que acabo de escribir y redirijirlo a la funcion controlC
+trap controlC INT
+
+# Si no ccomento se ejecuta despues de 10 segundos
+# sleep 10
+
+#///////////////////////////////////////////
+#///////////////////////////////////////////
+
+function helpPanel(){
+  # Hacemos mencion el nombre del script que estamos ejecutando con $0
+  echo -e "\n${yellowColour}[+]${endColour}${grayColour} Uso:${endColour}${purpleColour} $0${endColour}\n"
+  echo -e "\t${blueColour}-m)${endColour}${grayColour} Dinero con el que desea jugar${endColour}"
+  echo -e "\t${blueColour}-t)${endColour} Tecnica de juego a utilizar${endColour}${purpleColour} (${endColour}${yellowColour}martingala${endColour}${blueColour}/${endColour}${yellowColour}inverseLabroucher${endColour}${purpleColour})${endColour}\n"
+  exit 1
+}
+function martingala() {
+  echo -e ""
+  echo -e "\033[1;34m[+] Dinero actual ${money}€\033[0m|"
+  echo -e ""
+  echo -ne "\033[1;34m[+] ¿Cuánto dinero quieres empezar a apostar?\033[0m\033[1;31m€ -> " && read initial_bet
+
+  # Comprobamos si la cantidad de la apuesta es mayor que el dinero disponible
+  if [ "$initial_bet" -gt "$money" ]; then
+    echo -e "\n${redColour}[+] Lo siento, no tienes suficiente dinero para hacer esa apuesta.${endColour}\n"
+    initial_bet=$money
+  fi
+
+  echo -ne "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de $initial_bet€\033[0m "
+  echo -e "\n"
+
+  # Creamos backup
+  backup_bet=$initial_bet
+
+  # Iniciamos While
+  tput civis #Ocultar
+  while true; do
+    if [ "$money" -eq 0 ]; then
+      echo -e "\n${redColour}[+] Lo siento, te has quedado sin dinero. El juego ha terminado.${endColour}\n"
+      break
+    fi
+    echo -e "\n${yellowColour}[+]${endColour}${yellowColour} Acabas de apostar${endColour} ${blueColour}$initial_bet€${endColour} ${yellowColour}y tienes${endColour} ${blueColour}$money€${endColour}"
+
+    # Generamos un número aleatorio para decidir si apostamos a par o impar
+    random_number=$((RANDOM % 2))
+    if [ $random_number -eq 0 ]; then
+      par_impar="par"
+    else
+      par_impar="impar"
+    fi
+    echo -e "\n${yellowColour}[+] Vamos a apostar a $par_impar\033[0m "
+    random_number="$(($RANDOM % 37))"
+    echo -e "${yellowColour}[+] Ha salido el número${endColour} ${blueColour}$random_number${endColour}"
+    sleep 1
+
+    if [ "$(($random_number % 2  ))" -eq 0 ]; then
+      # Si el número que ha salido es igual a 0, has perdido
+      if [ "$random_number" -eq 0 ]; then
+        echo -e "\n${yellowColour}[+] Ha salido el 0, por tanto pierdes${endColour}\n"
+        money=$(($money-$initial_bet))
+        initial_bet=$(( $initial_bet / 2 )) # Ajuste de apuesta después de perder por cero
+        if [ "$initial_bet" -lt "$backup_bet" ]; then
+          initial_bet=$backup_bet
+        fi
+      else
+        echo -e "\n${yellowColour}[+] El número que ha salido es Par, ${endColour} ${purpleColour} Ganas${endColour}\n"
+        reward=$(($initial_bet*2))
+        echo -e "\n${yellowColour}[+] Ganas un total de${endColour} ${blueColour}$reward€${endColour}"
+money=$(($money+$reward))
+echo -e "\n${yellowColour}[+] Tienes${endColour} ${blueColour}$money€${endColour}\n"
+initial_bet=$backup_bet
+fi
+else
+echo -e "\n${yellowColour}[+] El número que ha salido es Impar ${endColour} ${redColour}Pierdes ${endColour}\n"
+money=$(($money-$initial_bet))
+initial_bet=$(( $initial_bet * 2 ))
+echo -e "\n${yellowColour}[+] Ahora te quedan ${endColour} ${redColour}$money€ ${endColour}\n"
+sleep 1
+  # Si se queda sin dinero se acaba el juego
+  if [ "$money" -eq 0 ]; then
+    echo -e "\n${yellowColour}[+] Te has quedado sin dinero, fin del juego.${endColour}\n"
+    exit 1
+  fi
+fi
+
+# Comprobamos si la cantidad de la apuesta es mayor que el dinero disponible después de cada jugada
+if [ "$initial_bet" -gt "$money" ]; then
+  echo -e "\n${redColour}[+] Lo siento, no tienes suficiente dinero para hacer esa apuesta.${endColour}\n"
+  initial_bet=$money
+fi
+done
+
+tput cnorm #Recuperamos el cursor
+}
+
+
+
+# VOY MINUTO 13 video: Scripting en Bash [4-15]
+
+while getopts "m:t:h" arg; do
+  case $arg in
+    m) money=$OPTARG;;
+    t) technique=$OPTARG;;
+    # Cuando falle la opcion vamos a la  funcion panel de ayuda
+    h) helpPanel;;
+  
+  esac
+done
+
+# Estas dos variables tienen que tener contenido
+if [ $money ] && [ $technique ]; then
+  # echo -e  "\n${yellowColour}Voy a jugar con $money€ dinero usando la tecnica $technique\n${endColour}"
+  if [ "$technique" == "martingala" ]; then
+    martingala
+  else
+    echo -e  "\n${yellowColour}La técnica de juego introducida ($technique) no es valida\n${endColour}"
+    helpPanel
+  fi
+else
+  helpPanel
+fi#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+jugadas=()
+contador_respuesta_par=0
+contador_respuesta_impar=0
+
+echo "Bienvenido al juego de la ruleta."
+
+read -p "Ingresa el dinero que quieres jugar: " dinero
+dinero_inicial=$dinero
+
+while true; do
+    read -p "Quieres jugar a par (p) o impar (i)? " eleccion
+    if [ $eleccion == "p" ]; then
+        eleccion_texto="Par"
+        break
+    elif [ $eleccion == "i" ]; then
+        eleccion_texto="Impar"
+        break
+    else
+        echo "Opción inválida. Inténtalo de nuevo."
+    fi
+done
+
+apuesta=10
+
+while [ $dinero -gt 0 ]; do
+    respuesta=$((RANDOM % 2))
+    jugadas+=($respuesta)
+    if [ $respuesta -eq 0 ]; then
+        echo "Ha salido Par"
+        ((contador_respuesta_par++))
+        if [ $eleccion == "p" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        else
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+        fi
+    else
+        echo "Ha salido Impar"
+        ((contador_respuesta_impar++))
+        jugadas+=($respuesta)
+        if [ $eleccion == "i" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        else
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+        fi
+    fi
+done
+
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+
+echo "Resultados de las jugadas:"
+echo "Jugadas: ${jugadas[*]}"
+echo "Cantidad de pares: $(grep -o "0" <<< "${jugadas[*]}" | wc -l)"
+echo "Cantidad de impares: $(grep -o "1" <<< "${jugadas[*]}" | wc -l)"
+
+# RESULTADO POR CONSOLA
+
+# next@next-System:~/Imágenes/Menu-bash-sarosi2$ ./ruleta5.sh
+# Bienvenido al juego de la ruleta.
+# Ingresa el dinero que quieres jugar: 1000
+# Quieres jugar a par (p) o impar (i)? p
+# Ha salido Impar
+# Has perdido. Tu dinero ahora es de 980.
+# Ha salido Impar
+# Has perdido. Tu dinero ahora es de 940.
+# Ha salido Impar
+# Has perdido. Tu dinero ahora es de 860.
+# Ha salido Par
+# Has ganado. Tu dinero ahora es de 940.
+# Ha salido Par
+# Has ganado. Tu dinero ahora es de 950.
+# Contador de respuestas:
+# Par: 27
+# Impar: 31
+# Resultados de las jugadas:
+# Jugadas: 1 1 1 1 1 1 0 0 0 0 1 1 0 1 1 0 0 1 1 0 0 0 1 1 1 1 0 0 1 1 0 1 1 0 0 0 1 1 0 1 1 0 1 1 0 1 1 1 1 0 1 1 1 1 0 1 1 0 1 1 1 1 0 0 0 1 1 0 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1
+# Cantidad de pares: 27
+# Cantidad de impares: 62
+# next@next-System:~/Imágenes/Menu-bash-sarosi2$ 
+
+# Por ejemplo, si la lista jugadas tiene los siguientes valores:
+
+# 1 0 0 1 1 0 1
+
+# Significa que en la primera jugada salió un número impar, en la segunda y tercera jugadas salieron números pares, en la cuarta y quinta jugadas salieron números impares, en la sexta jugada salió un número par y en la séptima jugada salió un número impar.#!/bin/bash
+
+#Colours
+greenColour="\e[0;32m\033[1m"
+endColour="\033[0m\e[0m"
+redColour="\e[0;31m\033[1m"
+blueColour="\e[0;34m\033[1m"
+yellowColour="\e[0;33m\033[1m"
+purpleColour="\e[0;35m\033[1m"
+turquoiseColour="\e[0;36m\033[1m"
+grayColour="\e[0;37m\033[1m"
+
+function controlC() {
+  # Parametro -e para que me aplique los saltos de linea
+  echo -e "\n\n${redColour}[!] Saliendo...${endColour}\n"
+  # Codigo de estado no exitoso
+  exit 1
+}
+
+# controlC
+# Para capturr el atajo de teclado que acabo de escribir y redirijirlo a la funcion controlC
+trap controlC INT
+
+# Si no ccomento se ejecuta despues de 10 segundos
+# sleep 10
+
+#///////////////////////////////////////////
+#///////////////////////////////////////////
+
+function helpPanel() {
+  # Hacemos mencion el nombre del script que estamos ejecutando con $0
+  echo -e "\n${yellowColour}[+]${endColour}${grayColour} Uso:${endColour}${purpleColour} $0${endColour}\n"
+  echo -e "\t${blueColour}-m)${endColour}${grayColour} Dinero con el que desea jugar${endColour}"
+  echo -e "\t${blueColour}-t)${endColour} Tecnica de juego a utilizar${endColour}${purpleColour} (${endColour}${yellowColour}martingala${endColour}${blueColour}/${endColour}${yellowColour}inverseLabroucher${endColour}${purpleColour})${endColour}\n"
+  exit 1
+}
+
+function martingala() {
+  echo -e ""
+  echo -e "\033[1;34m[+] Dinero actual ${money}€\033[0m|"
+  echo -e ""
+  echo -ne "\033[1;34m[+] ¿Cuánto dinero quieres empezar a apostar?\033[0m\033[1;31m€ -> " && read initial_bet
+
+  # Comprobamos si la cantidad de la apuesta es mayor que el dinero disponible
+  if [ "$initial_bet" -gt "$money" ]; then
+    echo -e "\n${redColour}[+] Lo siento, no tienes suficiente dinero para hacer esa apuesta.${endColour}\n"
+    initial_bet=$money
+  fi
+
+  echo -ne "\033[1;34m[+] ¿Apostar a números pares o impares? (par/impar): \033[0m" && read par_impar
+  echo -ne "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de $initial_bet€ a $par_impar\033[0m "
+  echo -e "\n"
+
+  # Creamos backup
+  backup_bet=$initial_bet
+  # Contador variable
+  play_counter=1
+  # Jugadas malas
+  jugadas_malas="[ "
+
+  # Iniciamos While
+  tput civis #Ocultar
+  while true; do
+    if [ "$money" -eq 0 ]; then
+      echo -e "\n${redColour}[+] Lo siento, te has quedado sin dinero. El juego ha terminado.${endColour}\n"
+      break
+    fi
+    echo -e "\n${yellowColour}[+]${endColour}${yellowColour} Acabas de apostar${endColour} ${blueColour}$initial_bet€${endColour} ${yellowColour}y tienes${endColour} ${blueColour}$money€${endColour}"
+    random_number="$(($RANDOM % 37))"
+    echo -e "\n${yellowColour}[+] Ha salido el número${endColour} ${blueColour}$random_number${endColour}"
+
+    # sleep 1
+
+    if [ "$par_impar" == "par" ]; then
+      if [ "$(($random_number % 2))" -eq 0 ]; then
+        # Si el número que ha salido es igual a 0, has perdido
+        if [ "$random_number" -eq 0 ]; then
+          echo -e "\n${yellowColour}[+] Ha salido el 0, por tanto pierdes${endColour}\n"
+          money=$(($money - $initial_bet))
+          initial_bet=$(($initial_bet / 2))
+          jugadas_malas="$random_number "
+          # Ajuste de apuesta después de perder por cero
+          if [ "$initial_bet" -lt "$backup_bet" ]; then
+            initial_bet=$backup_bet
+          fi
+        else
+          echo -e "\n${yellowColour}[+] El número que ha salido es Par, ${endColour} ${purpleColour} Ganas${endColour}\n"
+          reward=$(($initial_bet * 2))
+          echo -e "\n${yellowColour}[+] Ganas un total de${endColour} ${blueColour}$reward€${endColour}"
+          money=$(($money + $reward))
+          echo -e "\n${yellowColour}[+] Tienes${endColour} ${blueColour}$money€${endColour}\n"
+          initial_bet=$backup_bet
+          jugadas_malas=""
+        fi
+      else
+        echo -e "\n${yellowColour}[+] El número que ha salido es Impar ${endColour} ${redColour}Pierdes ${endColour}\n"
+        money=$(($money - $initial_bet))
+        initial_bet=$(($initial_bet * 2))
+        jugadas_malas="$random_number "
+
+        echo -e "\n${yellowColour}[+] Ahora te quedan ${endColour} ${redColour}$money€ ${endColour}\n"
+        # sleep 1
+
+        # Si se queda sin dinero se acaba el juego
+        if [ "$money" -eq 0 ]; then
+          echo -e "\n${yellowColour}[+] Te has quedado sin dinero, fin del juego.${endColour}\n"
+          echo -e "\n${redColour}[+] Ham habido un total de $play_counter${endColour} jugadas ganadas\n"
+          echo -e "\n${redColour}[+] Las malas jugadas consecutvas que hemos perdido${endColour} $jugadas_malas jugadas\n"
+          echo -e "\n${redColour}[+] Total de jugadas consecutvas que hemos jugado${endColour} $(($jugadas_malas + $play_counter)) \n"
+          echo -e "\n${redColour}[+] La ronda $play_counter fue perdida, el número que salió fue $random_number\n"
+          tput cnorm
+          exit 0
+        fi
+      fi
+
+      # Comprobamos si la cantidad de la apuesta es mayor que el dinero disponible después de cada jugada
+      if [ "$initial_bet" -gt "$money" ]; then
+
+        echo -e "\n${redColour}[+] Lo siento, no tienes suficiente dinero para hacer esa apuesta.${endColour}\n"
+        initial_bet=$money
+      fi
+    fi
+    # Incrementamos en 1
+    let play_counter+=1
+  done
+
+  tput cnorm #Recuperamos el cursor
+}
+
+# VOY MINUTO 13 video: Scripting en Bash [4-15]
+
+while getopts "m:t:h" arg; do
+  case $arg in
+  m) money=$OPTARG ;;
+  t) technique=$OPTARG ;;
+  # Cuando falle la opcion vamos a la  funcion panel de ayuda
+  h) helpPanel ;;
+
+  esac
+done
+
+# Estas dos variables tienen que tener contenido
+if [ $money ] && [ $technique ]; then
+  # echo -e  "\n${yellowColour}Voy a jugar con $money€ dinero usando la tecnica $technique\n${endColour}"
+  if [ "$technique" == "martingala" ]; then
+    martingala
+  else
+    echo -e "\n${yellowColour}La técnica de juego introducida ($technique) no es valida\n${endColour}"
+    helpPanel
+  fi
+else
+  helpPanel
+fi
+#!/bin/bash
+
+#Colours
+greenColour="\e[0;32m\033[1m"
+endColour="\033[0m\e[0m"
+redColour="\e[0;31m\033[1m"
+blueColour="\e[0;34m\033[1m"
+yellowColour="\e[0;33m\033[1m"
+purpleColour="\e[0;35m\033[1m"
+turquoiseColour="\e[0;36m\033[1m"
+grayColour="\e[0;37m\033[1m"
+
+function controlC() {
+  # Parametro -e para que me aplique los saltos de linea
+  echo -e "\n\n${redColour}[!] Saliendo...${endColour}\n"
+  # Codigo de estado no exitoso
+  exit 1
+}
+
+# controlC
+# Para capturr el atajo de teclado que acabo de escribir y redirijirlo a la funcion controlC
+trap controlC INT
+
+# Si no ccomento se ejecuta despues de 10 segundos
+# sleep 10
+
+#///////////////////////////////////////////
+#///////////////////////////////////////////
+
+function helpPanel() {
+  # Hacemos mencion el nombre del script que estamos ejecutando con $0
+  echo -e "\n${yellowColour}[+]${endColour}${grayColour} Uso:${endColour}${purpleColour} $0${endColour}\n"
+  echo -e "\t${blueColour}-m)${endColour}${grayColour} Dinero con el que desea jugar${endColour}"
+  echo -e "\t${blueColour}-t)${endColour} Tecnica de juego a utilizar${endColour}${purpleColour} (${endColour}${yellowColour}martingala${endColour}${blueColour}/${endColour}${yellowColour}inverseLabroucher${endColour}${purpleColour})${endColour}\n"
+  # tput cnorm
+  exit 1
+}
+
+function martingala() {
+  echo -e ""
+  echo -e "\n[+] Dinero actual: $money"
+  echo -ne "[+] ¿Cuánto dinero con el que tienes pensado apostar? -> " && read initial_bet
+  echo -ne "[+] ¿Apostar a números pares o impares? (par/impar): " && read par_impar
+
+  # Se guarda una copia de la apuesta inicial en backup_bet para usarla más adelante
+  backup_bet=$initial_bet
+  # Se inicializa el contador de jugadas a 0
+  play_counter=0
+  # Se inicializa el contador de victorias a 0
+  win_counter=0
+  # Se crea una cadena vacía para guardar las malas jugadas consecutivas que se vayan produciendo
+  jugadas_malas=""
+  # Se inicializa el contador de victorias de 100€ cuando se pierde todo el dinero a 0
+  win_100_counter=0
+
+  while true; do
+    # Se incrementa el contador de jugadas al inicio de cada iteración del bucle
+    play_counter=$((play_counter + 1))
+    # Se resta el valor de la apuesta actual al dinero total
+    money=$(($money - $initial_bet))
+
+    # Se genera un número aleatorio entre 0 y 36 (37 valores posibles)
+    random_number="$(($RANDOM % 37))"
+    echo -e "\n"
+
+    if [ ! "$money" -le 0 ]; then
+      # Si se ha elegido apostar a números pares:
+      if [ "$par_impar" == "par" ]; then
+        # Si el número generado es par:
+        if [ "$(($random_number % 2))" -eq 0 ]; then
+          # Si el número generado es 0, se pierde la apuesta
+          if [ "$random_number" -eq 0 ]; then
+            # Se duplica el valor de la apuesta para la siguiente ronda
+            initial_bet=$(($initial_bet * 2))
+            # Se añade el número generado a la cadena de malas jugadas consecutivas
+            jugadas_malas+=" $random_number"
+          else
+            # Se gana la apuesta y se recupera el valor de la apuesta inicial
+            reward=$(($initial_bet * 2))
+            money=$(($money + $reward))
+            initial_bet=$backup_bet
+            # Se vacía la cadena de malas jugadas consecutivas
+            jugadas_malas=""
+            # Si se han ganado 100€, se muestra un mensaje y se incrementa el contador de victorias
+            if [ $money -ge $(($initial_bet + 100)) ]; then
+              # echo -e "\n[+] ¡Has ganado 100€!\n"
+              win_counter=$((win_counter + 1))
+              if [ $money -eq $(($initial_bet + 100)) ]; then
+                win_100_counter=$((win_100_counter + 1))
+              fi
+            fi
+          fi
+        else
+          # Si el número generado es impar, se pierde la apuesta
+          initial_bet=$(($initial_bet * 2))
+          jugadas_malas+=" $random_number"
+        fi
+      # Si se ha elegido apostar a números impares:
+      elif [ "$par_impar" == "impar" ]; then
+        # Si el número generado es impar:
+        if [ "$(($random_number % 2))" -ne 0 ]; then
+          # Se gana la apuesta y se recupera el valor de la apuesta inicial
+          reward=$(($initial_bet * 2))
+          money=$(($money + $reward))
+          initial_bet=$backup_bet
+          # Se vacía la cadena de malas jugadas consecutivas
+          jugadas_malas=""
+          # Si se han ganado 100€, se muestra un mensaje y se incrementa el contador de victorias
+          if [ $money -ge $(($initial_bet + 10)) ]; then
+            # echo -e "\n[+] ¡Has ganado 100€!\n"
+            win_counter=$((win_counter + 1))
+            if [ $money -eq $(($initial_bet + 100)) ]; then
+              win_10_counter=$((win_10_counter + 1))
+            fi
+          fi
+        fi
+      else
+        # Si el número generado es impar, se pierde la apuesta
+        initial_bet=$(($initial_bet * 2))
+        jugadas_malas+=" $random_number"
+      fi
+      # Si se han perdido 6 apuestas consecutivas, se muestra un mensaje y se reinicia la apuesta inicial
+      if [ "$(echo $jugadas_malas | wc -w)" -eq 6 ]; then
+        # echo -e "\n[+] Has perdido 6 apuestas consecutivas, se reinicia la apuesta inicial\n"
+        initial_bet=$backup_bet
+        jugadas_malas=""
+      fi
+    # Si no queda dinero para apostar, se muestra un mensaje y se termina la función
+    else
+      echo -e "\n[+] Te has quedado sin pasta\n"
+      echo -e "\n[+] Han habido un total de $play_counter jugadas\n"
+      echo -e "\n[+] Has ganado 100€ $win_10_counter veces cuando has perdido todo el dinero\n"
+
+      echo -e "\n[+] A continuación se van a mostrar las malas jugadas consecutivas que han salido\n"
+      echo "$jugadas_malas"
+      break
+    fi
+  done
+}
+
+while getopts "m:t:h" arg; do
+  case $arg in
+  m) money=$OPTARG ;;
+  t) technique=$OPTARG ;;
+  # Cuando falle la opcion vamos a la  funcion panel de ayuda
+  h) helpPanel ;;
+
+  esac
+done
+
+# Estas dos variables tienen que tener contenido
+if [ $money ] && [ $technique ]; then
+  # echo "Voy a jugar con $money dinero usando la tecnica $technique"
+  if [ "$technique" == "martingala" ]; then
+    martingala
+  else
+    echo -e "\n${redColour}[!]${endColour}${grayColour} La técnica de juego no es valida${endColour}"
+    helpPanel
+  fi
+else
+  # Llamamos al panel de ayuda si me equivo al introducir parametros
+  helpPanel
+fi
+
+
+# El script es un programa de línea de comandos en Bash que simula un juego de ruleta en el que el usuario puede elegir la cantidad de dinero con la que desea jugar y la técnica de juego que desea utilizar (actualmente solo está disponible la martingala).
+
+# La martingala es una técnica de juego en la que se duplica la apuesta cada vez que se pierde, con el objetivo de recuperar las pérdidas y obtener beneficios a largo plazo. En este caso, el usuario puede elegir apostar a números pares o impares.
+
+# El programa utiliza un bucle while para simular las jugadas y va mostrando información al usuario a medida que se van produciendo, como el dinero actual, las apuestas realizadas, los números generados y las victorias y derrotas.
+
+# Además, el programa también lleva un contador de las malas jugadas consecutivas que se van produciendo y, si se alcanza un número determinado (en este caso, 6), se reinicia la apuesta inicial.
+
+# Al final del juego, se muestra al usuario información relevante como el número de jugadas, la cantidad de veces que se ha ganado 100€ cuando se ha perdido todo el dinero y las malas jugadas consecutivas que se han producido.#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+
+jugadas=()
+contador_respuesta_par=0
+contador_respuesta_impar=0
+
+echo "Bienvenido al juego de la ruleta."
+
+read -p "Ingresa el dinero que quieres jugar: " dinero
+dinero_inicial=$dinero
+
+while true; do
+    read -p "Quieres jugar a par (p) o impar (i)? " eleccion
+    if [ $eleccion == "p" ]; then
+        eleccion_texto="Par"
+        break
+    elif [ $eleccion == "i" ]; then
+        eleccion_texto="Impar"
+        break
+    else
+        echo "Opción inválida. Inténtalo de nuevo."
+    fi
+done
+
+apuesta=10
+
+while [ $dinero -gt 0 ]; do
+    respuesta=$((RANDOM % 2))
+    jugadas+=($respuesta)
+    if [ $respuesta -eq 0 ]; then
+        echo "Ha salido Par"
+        ((contador_respuesta_par++))
+        if [ $eleccion == "p" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        else
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                break
+            fi
+        fi
+    else
+        echo "Ha salido Impar"
+        ((contador_respuesta_impar++))
+        jugadas+=($respuesta)
+        if [ $eleccion == "i" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        else
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                break
+            fi
+        fi
+    fi
+done
+
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+
+echo "Resultados de las jugadas:"
+echo "Jugadas: ${jugadas[*]}"
+for ((i=${#jugadas[@]}-1; i>=0; i--)); do
+    if [ ${jugadas[$i]} -eq 0 ]; then
+        echo "Jugada $((i+1)): Par"
+    else
+        echo "Jugada $((i+1)): Impar"
+    fi
+done | column -t
+echo "Cantidad de pares: $(grep -o "0" <<< "${jugadas[*]}" | wc -l)"
+echo "Cantidad de impares: $(grep -o "1" <<< "${jugadas[*]}" | wc -l)"
+
+# Este código te permite ingresar el dinero con el que deseas jugar y elegir si quieres jugar a par o a impar. Si pierdes, se aumenta tu apuesta y si ganas, se reinicia a la apuesta inicial. El juego termina cuando te quedas sin dinero.
+
+# Además, al final del juego, se muestra el contador de respuestas para cada opción (par o impar) y se muestran los resultados de cada jugada, indicando si salió un número par o impar.#!/bin/bash
+
+#Colours
+greenColour="\e[0;32m\033[1m"
+endColour="\033[0m\e[0m"
+redColour="\e[0;31m\033[1m"
+blueColour="\e[0;34m\033[1m"
+yellowColour="\e[0;33m\033[1m"
+purpleColour="\e[0;35m\033[1m"
+turquoiseColour="\e[0;36m\033[1m"
+grayColour="\e[0;37m\033[1m"
+
+# //////////////////////////////////////////////
+# //////////////////////////////////////////////
+# Principio de funciones
+
+function controlC() {
+  # Parametro -e para que me aplique los saltos de linea
+  echo -e "\n\n${redColour}[!] Saliendo...${endColour}\n"
+  # Codigo de estado no exitoso
+  exit 1
+}
+
+# controlC
+# Para capturr el atajo de teclado que acabo de escribir y redirijirlo a la funcion controlC
+trap controlC INT
+
+# Si no ccomento se ejecuta despues de 10 segundos
+# sleep 10
+
+#///////////////////////////////////////////
+#///////////////////////////////////////////
+
+function helpPanel() {
+  # Hacemos mencion el nombre del script que estamos ejecutando con $0
+  echo -e "\n${yellowColour}[+]${endColour}${grayColour} Uso:${endColour}${purpleColour} $0${endColour}\n"
+  echo -e "\t${blueColour}-m)${endColour}${grayColour} Dinero con el que desea jugar${endColour}"
+  echo -e "\t${blueColour}-t)${endColour} Tecnica de juego a utilizar${endColour}${purpleColour} (${endColour}${yellowColour}martingala${endColour}${blueColour}/${endColour}${yellowColour}inverseLabroucher${endColour}${purpleColour})${endColour}\n"
+  tput cnorm
+  exit 1
+}
+
+function martingala() {
+  echo -e ""
+  echo -e "\n[+] Dinero actual: $money"
+  echo -ne "[+] ¿Cuánto dinero con el que tienes pensado apostar? -> " && read initial_bet
+  echo -ne "[+] ¿Apostar a números pares o impares? (par/impar): " && read par_impar
+  echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de $initial_bet€ a $par_impar\033[0m\n "
+
+  # Para que cuando ganemos no apueste el doble,vale la apuesta inicial
+  backup_bet=$initial_bet
+  play_counter=1
+
+  tput civis #Ocultamos el cursor
+  while true; do
+    money=$(($money - $initial_bet))
+    echo -e "\n[+] Acabas de apostar $initial_bet€ y tienes $money€\n"
+    random_number="$(($RANDOM % 37))"
+    # echo -e "\n"
+    echo -e "[+] Ha salido el numero: $random_number"
+
+    # sleep 2
+
+    if [ ! "$money" -le 0 ]; then
+      if [ "$par_impar" == "par" ]; then
+
+        # Comprobamos si es par
+        if [ "$(($random_number % 2))" -eq 0 ]; then
+          # Anidamos y evitamos elif
+          if [ "$random_number" -eq 0 ]; then
+            echo -e "\n[+] Ha salido el 0 por tanto perdemos"
+            initial_bet=$(($initial_bet * 2))
+            echo -e "[+]Ahora te quedas en $money€"
+          else
+            echo -e "[+] El numero que ha salido es Par , Ganas"
+            reward=$(($initial_bet * 2))
+            echo -e "[+] Ganas un total de $reward€"
+            money=$(($money + $reward))
+            echo -e "[+] Tienes $money€"
+            inital_bet=$backup_bet
+          fi
+
+        else
+          echo -e "[+]El numero que ha salido es Impar , Pierdes"
+          initial_bet=$(($initial_bet * 2))
+          echo -e "[+]Ahora te quedas en $money€"
+        fi
+
+        # sleep 5
+
+      fi
+    else
+      echo -e "\n[+]Te has quedado sin pasta\n"
+      echo -e "[+]Han habido un total de $play_holder jugadas\n"
+      exit 0
+    fi
+
+    let counter+=1
+  done
+
+  tput cnorm #Recuperamos el cursor
+}
+
+# function inverseLabroucher() {
+#   echo -e "\n"
+#   echo -e "[+] Dinero actual: $money€"
+#   par_impar="par" # Puedes cambiar esto a "impar" si prefieres apostar a números impares
+#   echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de 5€ a $par_impar\033[0m\n "
+
+#   declare -a my_secuencia=(1 2 3 4)
+#   initial_bet=5
+#   win_count=0
+
+#   echo -e "\n[+] Comenzamos con la secuencia [${my_secuencia[@]}]"
+
+#   seq_index=0
+#   bet=$initial_bet
+#   money=$(($money - $bet))
+
+#   tput civis
+#   while true; do
+#     random_number="$(($RANDOM % 37))"
+#     echo -e "[+] Ha salido el numero: $random_number"
+
+#     if [ "$par_impar" == "par" ] && [ "$random_number" -ne 0 ]; then
+#       if [ "$(($random_number % 2))" -eq 0 ]; then
+#         echo -e "[+] El numero es Par, Ganas"
+#         reward=$(($bet * 2))
+#         let money+=$reward
+#         echo -e "\n[+] Tienes: $money€\n"
+
+#         let win_count+=1
+
+#         if [ $win_count -gt 1 ]; then
+#           my_secuencia[-1]=$((${my_secuencia[-1]} + 1))
+#         else
+#           my_secuencia=(1 2 3 4 5)
+#         fi
+
+#         bet=$((${my_secuencia[0]} + ${my_secuencia[-1]}))
+#         money=$(($money - $bet))
+
+#         echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]}]"
+#         echo -e "[+] Invertimos $bet€"
+#       else
+#         echo -e "\n[+] El número es impar, pierdes\n"
+
+#         my_secuencia=(1 2 3 4)
+#         bet=$initial_bet
+#         money=$(($money - $bet))
+#         win_count=0
+
+#         echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]}]"
+#         echo -e "[+] Invertimos $bet€"
+#       fi
+#     fi
+
+#     sleep 2
+#   done
+
+#   tput cnorm
+# }
+
+
+function inverseLabroucher() {
+  echo -e "\n"
+  echo -e "[+] Dinero actual: $money€"
+  par_impar="par" # Puedes cambiar esto a "impar" si prefieres apostar a números impares
+  echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de 5€ a $par_impar\033[0m\n "
+
+  declare -a my_secuencia=(1 2 3 4)
+  initial_bet=5
+  win_count=0
+
+  echo -e "\n[+] Comenzamos con la secuencia [${my_secuencia[@]}]"
+
+  seq_index=0
+  bet=$initial_bet
+  money=$(($money - $bet))
+
+  won_games=0
+  lost_games=0
+
+  tput civis
+  while true; do
+    random_number="$(($RANDOM % 37))"
+    echo -e "[+] Ha salido el numero: $random_number"
+
+    if [ "$par_impar" == "par" ] && [ "$random_number" -ne 0 ]; then
+      if [ "$(($random_number % 2))" -eq 0 ]; then
+        echo -e "[+] El numero es Par, Ganas"
+        reward=$(($bet * 2))
+        let money+=$reward
+        echo -e "\n[+] Tienes: $money€\n"
+
+        let win_count+=1
+        let won_games+=1
+
+        if [ $win_count -gt 1 ]; then
+          my_secuencia[-1]=$((${my_secuencia[-1]} + 1))
+        else
+          my_secuencia=(1 2 3 4 5)
+        fi
+
+        bet=$((${my_secuencia[0]} + ${my_secuencia[-1]}))
+        money=$(($money - $bet))
+
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]}]"
+        echo -e "[+] Invertimos $bet€"
+      else
+        echo -e "\n[+] El número es impar, pierdes\n"
+
+        my_secuencia=(1 2 3 4)
+        bet=$initial_bet
+        money=$(($money - $bet))
+        win_count=0
+        let lost_games+=1
+
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]}]"
+        echo -e "[+] Invertimos $bet€"
+      fi
+    fi
+
+    echo -e "Partidas ganadas: ${won_games}"
+    echo -e "Partidas perdidas: ${lost_games}"
+
+    if [ $money -lt $initial_bet ]; then
+      echo -e "\n[+] Has perdido todo tu dinero. Juego terminado."
+      echo -e "[+] Partidas ganadas: ${won_games}"
+      echo -e "[+] Partidas perdidas: ${lost_games}"
+      break
+    fi
+
+    sleep 0.01
+  done
+
+  tput cnorm
+}
+
+
+
+# Con este código, después de cada victoria consecutiva, el último número de la secuencia se incrementará en 1 y la apuesta se ajustará en consecuencia. Por ejemplo, después de tres victorias consecutivas, la secuencia será [1 2 3 4 7] y la apuesta será de 8. Después de cuatro victorias consecutivas, la secuencia será [1 2 3 4 8] y la apuesta será de 9. Y así sucesivamente.
+
+# //////////////////////////////////////////////
+# //////////////////////////////////////////////
+# FIN DE FUNCIONES
+
+while getopts "m:t:h" arg; do
+  case $arg in
+  m) money=$OPTARG ;;
+  t) technique=$OPTARG ;;
+  # Cuando falle la opcion vamos a la  funcion panel de ayuda
+  h) helpPanel ;;
+
+  esac
+done
+
+# Estas dos variables tienen que tener contenido
+if [ $money ] && [ $technique ]; then
+  # echo "Voy a jugar con $money dinero usando la tecnica $technique"
+  if [ "$technique" == "martingala" ]; then
+    martingala
+  elif [ "$technique" == "inverseLabroucher" ]; then
+    inverseLabroucher
+  else
+    echo -e "\n${redColour}[!]${endColour}${grayColour} La técnica de juego no es valida${endColour}"
+    helpPanel
+  fi
+else
+  # Llamamos al panel de ayuda si me equivo al introducir parametros
+  helpPanel
+fi
+
+# Este código es un script de Bash que se encarga de ejecutar un juego de ruleta, utilizando dos técnicas de apuestas: Martingala e Inversa de Labouchere.
+
+# Primero, el script define algunas variables de colores para la salida de texto en la consola, y luego define algunas funciones útiles, como una función para manejar la interrupción de control-c y una función para mostrar el panel de ayuda.
+
+# Luego, hay dos funciones principales que implementan las dos técnicas de apuestas. La función martingala utiliza la estrategia Martingala, que implica duplicar la apuesta después de cada pérdida, y volver a la apuesta inicial después de cada victoria. La función inverseLabroucher utiliza la estrategia de apuestas inversa de Labouchere, que implica construir una secuencia de números y apostar la suma de los dos extremos después de cada pérdida, y eliminar los extremos de la secuencia después de cada victoria.
+
+# El código principal del script procesa los argumentos de línea de comandos para obtener la cantidad de dinero con la que se desea jugar y la técnica de apuestas a utilizar, y luego llama a la función correspondiente para ejecutar el juego. Si no se proporcionan argumentos o se proporcionan argumentos incorrectos, se muestra el panel de ayuda.
+#!/bin/bash
+
+#Colours
+greenColour="\e[0;32m\033[1m"
+endColour="\033[0m\e[0m"
+redColour="\e[0;31m\033[1m"
+blueColour="\e[0;34m\033[1m"
+yellowColour="\e[0;33m\033[1m"
+purpleColour="\e[0;35m\033[1m"
+turquoiseColour="\e[0;36m\033[1m"
+grayColour="\e[0;37m\033[1m"
+
+# //////////////////////////////////////////////
+# //////////////////////////////////////////////
+# Principio de funciones
+
+function controlC() {
+  # Parametro -e para que me aplique los saltos de linea
+  echo -e "\n\n${redColour}[!] Saliendo...${endColour}\n"
+  # Codigo de estado no exitoso
+  exit 1
+}
+
+# controlC
+# Para capturr el atajo de teclado que acabo de escribir y redirijirlo a la funcion controlC
+trap controlC INT
+
+# Si no ccomento se ejecuta despues de 10 segundos
+# sleep 10
+
+#///////////////////////////////////////////
+#///////////////////////////////////////////
+
+function helpPanel() {
+  # Hacemos mencion el nombre del script que estamos ejecutando con $0
+  echo -e "\n${yellowColour}[+]${endColour}${grayColour} Uso:${endColour}${purpleColour} $0${endColour}\n"
+  echo -e "\t${blueColour}-m)${endColour}${grayColour} Dinero con el que desea jugar${endColour}"
+  echo -e "\t${blueColour}-t)${endColour} Tecnica de juego a utilizar${endColour}${purpleColour} (${endColour}${yellowColour}martingala${endColour}${blueColour}/${endColour}${yellowColour}inverseLabroucher${endColour}${purpleColour})${endColour}\n"
+  tput cnorm
+  exit 1
+}
+
+function martingala() {
+  echo -e ""
+  echo -e "\n[+] Dinero actual: $money"
+  echo -ne "[+] ¿Cuánto dinero con el que tienes pensado apostar? -> " && read initial_bet
+  echo -ne "[+] ¿Apostar a números pares o impares? (par/impar): " && read par_impar
+  echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de $initial_bet€ a $par_impar\033[0m\n "
+
+  # Para que cuando ganemos no apueste el doble,vale la apuesta inicial
+  backup_bet=$initial_bet
+  play_counter=1
+
+  tput civis #Ocultamos el cursor
+  while true; do
+    money=$(($money - $initial_bet))
+    echo -e "\n[+] Acabas de apostar $initial_bet€ y tienes $money€\n"
+    random_number="$(($RANDOM % 37))"
+    # echo -e "\n"
+    echo -e "[+] Ha salido el numero: $random_number"
+
+    # sleep 2
+
+    if [ ! "$money" -le 0 ]; then
+      if [ "$par_impar" == "par" ]; then
+
+        # Comprobamos si es par
+        if [ "$(($random_number % 2))" -eq 0 ]; then
+          # Anidamos y evitamos elif
+          if [ "$random_number" -eq 0 ]; then
+            echo -e "\n[+] Ha salido el 0 por tanto perdemos"
+            initial_bet=$(($initial_bet * 2))
+            echo -e "[+]Ahora te quedas en $money€"
+          else
+            echo -e "[+] El numero que ha salido es Par , Ganas"
+            reward=$(($initial_bet * 2))
+            echo -e "[+] Ganas un total de $reward€"
+            money=$(($money + $reward))
+            echo -e "[+] Tienes $money€"
+            inital_bet=$backup_bet
+          fi
+
+        else
+          echo -e "[+]El numero que ha salido es Impar , Pierdes"
+          initial_bet=$(($initial_bet * 2))
+          echo -e "[+]Ahora te quedas en $money€"
+        fi
+
+        # sleep 5
+
+      fi
+    else
+      echo -e "\n[+]Te has quedado sin pasta\n"
+      echo -e "[+]Han habido un total de $play_holder jugadas\n"
+      exit 0
+    fi
+
+    let counter+=1
+  done
+
+  tput cnorm #Recuperamos el cursor
+}
+
+function inverseLabroucher() {
+  echo -e "\n"
+  echo -e "[+] Dinero actual: $money€"
+  par_impar="par" # Puedes cambiar esto a "impar" si prefieres apostar a números impares
+  echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de 5€ a $par_impar\033[0m\n "
+
+  declare -a my_secuencia=(1 2 3 4)
+  initial_bet=5
+  win_count=0
+
+  echo -e "\n[+] Comenzamos con la secuencia [${my_secuencia[@]}]"
+
+  seq_index=0
+  bet=$initial_bet
+  money=$(($money - $bet))
+
+  won_games=0
+  lost_games=0
+
+  tput civis
+  while true; do
+    random_number="$(($RANDOM % 37))"
+    echo -e "[+] Ha salido el numero: $random_number"
+
+    if [ "$par_impar" == "par" ] && [ "$random_number" -ne 0 ]; then
+      if [ "$(($random_number % 2))" -eq 0 ]; then
+        echo -e "[+] El numero es Par, Ganas"
+        reward=$(($bet * 2))
+        let money+=$reward
+        echo -e "\n[+] Tienes: $money€\n"
+
+        let win_count+=1
+        let won_games+=1
+
+        if [ $win_count -gt 1 ]; then
+          my_secuencia[-1]=$((${my_secuencia[-1]} + ${my_secuencia[-2]}))
+          unset my_secuencia[-2]
+        else
+          my_secuencia=(1 2 3 4)
+        fi
+
+        bet=${my_secuencia[0]}
+        money=$(($money - $bet))
+
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]}]"
+        echo -e "[+] Invertimos $bet€"
+      else
+        echo -e "\n[+] El número es impar, pierdes\n"
+
+        my_secuencia+=(${my_secuencia[-1]})
+        my_secuencia+=(${my_secuencia[-2]})
+        unset my_secuencia[-1]
+        unset my_secuencia[-2]
+
+        bet=$((${my_secuencia[0]} + ${my_secuencia[-1]}))
+        money=$(($money - $bet))
+        win_count=0
+        let lost_games+=1
+
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]}]"
+        echo -e "[+] Invertimos $bet€"
+      fi
+    fi
+
+    echo -e "Partidas ganadas: ${won_games}"
+    echo -e "Partidas perdidas: ${lost_games}"
+
+    if [ $money -ge 100 ]; then
+      echo -e "\n[+] Has ganado 100€, ¡enhorabuena!\n"
+      echo -e "[+] Partidas ganadas a $par_impar: ${won_games}"
+      echo -e "[+] Partidas perdidas a $par_impar: ${lost_games}\n"
+      break
+    fi
+
+    sleep 0.1
+  done
+
+  tput cnorm
+}
+
+# Con este código, después de cada victoria consecutiva, el último número de la secuencia se incrementará en 1 y la apuesta se ajustará en consecuencia. Por ejemplo, después de tres victorias consecutivas, la secuencia será [1 2 3 4 7] y la apuesta será de 8. Después de cuatro victorias consecutivas, la secuencia será [1 2 3 4 8] y la apuesta será de 9. Y así sucesivamente.
+
+# //////////////////////////////////////////////
+# //////////////////////////////////////////////
+# FIN DE FUNCIONES
+
+while getopts "m:t:h" arg; do
+  case $arg in
+  m) money=$OPTARG ;;
+  t) technique=$OPTARG ;;
+  # Cuando falle la opcion vamos a la  funcion panel de ayuda
+  h) helpPanel ;;
+
+  esac
+done
+
+# Estas dos variables tienen que tener contenido
+if [ $money ] && [ $technique ]; then
+  # echo "Voy a jugar con $money dinero usando la tecnica $technique"
+  if [ "$technique" == "martingala" ]; then
+    martingala
+  elif [ "$technique" == "inverseLabroucher" ]; then
+    inverseLabroucher
+  else
+    echo -e "\n${redColour}[!]${endColour}${grayColour} La técnica de juego no es valida${endColour}"
+    helpPanel
+  fi
+else
+  # Llamamos al panel de ayuda si me equivo al introducir parametros
+  helpPanel
+fi
+
+# Este es un script de Bash que permite jugar a la ruleta usando dos técnicas de juego: martingala e inverseLabroucher. Al inicio del script, se definen varias variables de color para la terminal. Luego se definen varias funciones, incluyendo una función para capturar la señal SIGINT (Ctrl+C) y otra para mostrar el panel de ayuda. Las dos técnicas de juego también se definen como funciones.
+
+# Cuando se ejecuta el script, se utiliza el comando getopts para procesar los argumentos de línea de comandos. El usuario debe proporcionar el dinero con el que desea jugar y la técnica que desea utilizar. Si no se proporcionan estos argumentos, se muestra el panel de ayuda.
+
+# Si el usuario selecciona la técnica de martingala, se le solicita que elija el número con el que desea apostar (par o impar) y cuánto dinero desea apostar. El script utiliza un bucle while para continuar jugando hasta que el usuario se quede sin dinero o gane 100€. Si el usuario gana una apuesta, su dinero aumenta y la apuesta se restablece a su valor inicial. Si el usuario pierde una apuesta, su apuesta se duplica y su dinero se reduce en consecuencia.
+
+# Si el usuario selecciona la técnica de inverseLabroucher, se utiliza una secuencia de números para determinar el tamaño de las apuestas. Después de cada victoria consecutiva, el último número de la secuencia se incrementa en 1 y la apuesta se ajusta en consecuencia. Después de cada derrota, se agrega un nuevo número a la secuencia y la apuesta se ajusta en consecuencia. El usuario debe elegir si quiere apostar a números pares o impares. El juego continúa hasta que el usuario gana 100€ o se queda sin dinero.#!/bin/bash
+
+#Colours
+greenColour="\e[0;32m\033[1m"
+endColour="\033[0m\e[0m"
+redColour="\e[0;31m\033[1m"
+blueColour="\e[0;34m\033[1m"
+yellowColour="\e[0;33m\033[1m"
+purpleColour="\e[0;35m\033[1m"
+turquoiseColour="\e[0;36m\033[1m"
+grayColour="\e[0;37m\033[1m"
+
+# //////////////////////////////////////////////
+# //////////////////////////////////////////////
+# Principio de funciones
+
+function controlC() {
+  # Parametro -e para que me aplique los saltos de linea
+  echo -e "\n\n${redColour}[!] Saliendo...${endColour}\n"
+  # Codigo de estado no exitoso
+  exit 1
+}
+
+# controlC
+# Para capturr el atajo de teclado que acabo de escribir y redirijirlo a la funcion controlC
+trap controlC INT
+
+# Si no ccomento se ejecuta despues de 10 segundos
+# sleep 10
+
+#///////////////////////////////////////////
+#///////////////////////////////////////////
+
+function helpPanel() {
+  # Hacemos mencion el nombre del script que estamos ejecutando con $0
+  echo -e "\n${yellowColour}[+]${endColour}${grayColour} Uso:${endColour}${purpleColour} $0${endColour}\n"
+  echo -e "\t${blueColour}-m)${endColour}${grayColour} Dinero con el que desea jugar${endColour}"
+  echo -e "\t${blueColour}-t)${endColour} Tecnica de juego a utilizar${endColour}${purpleColour} (${endColour}${yellowColour}martingala${endColour}${blueColour}/${endColour}${yellowColour}inverseLabroucher${endColour}${purpleColour})${endColour}\n"
+  tput cnorm
+  exit 1
+}
+
+function martingala() {
+  echo -e ""
+  echo -e "\n[+] Dinero actual: $money"
+  echo -ne "[+] ¿Cuánto dinero con el que tienes pensado apostar? -> " && read initial_bet
+  echo -ne "[+] ¿Apostar a números pares o impares? (par/impar): " && read par_impar
+  echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de $initial_bet€ a $par_impar\033[0m\n "
+
+  # Para que cuando ganemos no apueste el doble,vale la apuesta inicial
+  backup_bet=$initial_bet
+  play_counter=1
+
+  tput civis #Ocultamos el cursor
+  while true; do
+    money=$(($money - $initial_bet))
+    echo -e "\n[+] Acabas de apostar $initial_bet€ y tienes $money€\n"
+    random_number="$(($RANDOM % 37))"
+    # echo -e "\n"
+    echo -e "[+] Ha salido el numero: $random_number"
+
+    sleep 2
+
+    if [ ! "$money" -le 0 ]; then
+      if [ "$par_impar" == "par" ]; then
+
+        # Comprobamos si es par
+        if [ "$(($random_number % 2))" -eq 0 ]; then
+          # Anidamos y evitamos elif
+          if [ "$random_number" -eq 0 ]; then
+            echo -e "\n[+] Ha salido el 0 por tanto perdemos"
+            initial_bet=$(($initial_bet * 2))
+            echo -e "[+]Ahora te quedas en $money€"
+          else
+            echo -e "[+] El numero que ha salido es Par , Ganas"
+            reward=$(($initial_bet * 2))
+            echo -e "[+] Ganas un total de $reward€"
+            money=$(($money + $reward))
+            echo -e "[+] Tienes $money€"
+            inital_bet=$backup_bet
+          fi
+
+        else
+          echo -e "[+]El numero que ha salido es Impar , Pierdes"
+          initial_bet=$(($initial_bet * 2))
+          echo -e "[+]Ahora te quedas en $money€"
+        fi
+
+        sleep 5
+
+      fi
+    else
+      echo -e "\n[+]Te has quedado sin pasta\n"
+      echo -e "[+]Han habido un total de $play_holder jugadas\n"
+      exit 0
+    fi
+
+    let counter+=1
+  done
+
+  tput cnorm #Recuperamos el cursor
+}
+
+function inverseLabroucher() {
+  echo -e "\n"
+  echo -e "[+] Dinero actual: $money€"
+  par_impar="par" # Puedes cambiar esto a "impar" si prefieres apostar a números impares
+  echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de 5€ a $par_impar\033[0m\n "
+
+  declare -a my_secuencia=(1 2 3 4)
+  initial_bet=5
+  win_count=0
+
+  echo -e "\n[+] Comenzamos con la secuencia [${my_secuencia[@]}]"
+
+  seq_index=0
+  bet=$initial_bet
+  money=$(($money - $bet))
+
+  tput civis
+  while true; do
+    random_number="$(($RANDOM % 37))"
+    echo -e "[+] Ha salido el numero: $random_number"
+
+    if [ "$par_impar" == "par" ] && [ "$random_number" -ne 0 ]; then
+      if [ "$(($random_number % 2))" -eq 0 ]; then
+        echo -e "[+] El numero es Par, Ganas"
+        reward=$(($bet * 2))
+        let money+=$reward
+        echo -e "\n[+] Tienes: $money€\n"
+
+        let win_count+=1
+
+        if [ $win_count -gt 1 ]; then
+          my_secuencia[-1]=$((${my_secuencia[-1]} + 1))
+        else
+          my_secuencia=(1 2 3 4 5)
+        fi
+
+        bet=$((${my_secuencia[0]} + ${my_secuencia[-1]}))
+        money=$(($money - $bet))
+
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]}]"
+        echo -e "[+] Invertimos $bet€"
+      else
+        echo -e "\n[+] El número es impar, pierdes\n"
+
+        my_secuencia=(1 2 3 4)
+        bet=$initial_bet
+        money=$(($money - $bet))
+        win_count=0
+
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]}]"
+        echo -e "[+] Invertimos $bet€"
+      fi
+    fi
+
+    sleep 2
+  done
+
+  tput cnorm
+}
+
+# Con este código, después de cada victoria consecutiva, el último número de la secuencia se incrementará en 1 y la apuesta se ajustará en consecuencia. Por ejemplo, después de tres victorias consecutivas, la secuencia será [1 2 3 4 7] y la apuesta será de 8. Después de cuatro victorias consecutivas, la secuencia será [1 2 3 4 8] y la apuesta será de 9. Y así sucesivamente.
+
+# //////////////////////////////////////////////
+# //////////////////////////////////////////////
+# FIN DE FUNCIONES
+
+while getopts "m:t:h" arg; do
+  case $arg in
+  m) money=$OPTARG ;;
+  t) technique=$OPTARG ;;
+  # Cuando falle la opcion vamos a la  funcion panel de ayuda
+  h) helpPanel ;;
+
+  esac
+done
+
+# Estas dos variables tienen que tener contenido
+if [ $money ] && [ $technique ]; then
+  # echo "Voy a jugar con $money dinero usando la tecnica $technique"
+  if [ "$technique" == "martingala" ]; then
+    martingala
+  elif [ "$technique" == "inverseLabroucher" ]; then
+    inverseLabroucher
+  else
+    echo -e "\n${redColour}[!]${endColour}${grayColour} La técnica de juego no es valida${endColour}"
+    helpPanel
+  fi
+else
+  # Llamamos al panel de ayuda si me equivo al introducir parametros
+  helpPanel
+fi
+
+# Este código es un script de Bash que se encarga de ejecutar un juego de ruleta, utilizando dos técnicas de apuestas: Martingala e Inversa de Labouchere.
+
+# Primero, el script define algunas variables de colores para la salida de texto en la consola, y luego define algunas funciones útiles, como una función para manejar la interrupción de control-c y una función para mostrar el panel de ayuda.
+
+# Luego, hay dos funciones principales que implementan las dos técnicas de apuestas. La función martingala utiliza la estrategia Martingala, que implica duplicar la apuesta después de cada pérdida, y volver a la apuesta inicial después de cada victoria. La función inverseLabroucher utiliza la estrategia de apuestas inversa de Labouchere, que implica construir una secuencia de números y apostar la suma de los dos extremos después de cada pérdida, y eliminar los extremos de la secuencia después de cada victoria.
+
+# El código principal del script procesa los argumentos de línea de comandos para obtener la cantidad de dinero con la que se desea jugar y la técnica de apuestas a utilizar, y luego llama a la función correspondiente para ejecutar el juego. Si no se proporcionan argumentos o se proporcionan argumentos incorrectos, se muestra el panel de ayuda.
+#!/bin/bash
+
+#Colours
+greenColour="\e[0;32m\033[1m"
+endColour="\033[0m\e[0m"
+redColour="\e[0;31m\033[1m"
+blueColour="\e[0;34m\033[1m"
+yellowColour="\e[0;33m\033[1m"
+purpleColour="\e[0;35m\033[1m"
+turquoiseColour="\e[0;36m\033[1m"
+grayColour="\e[0;37m\033[1m"
+
+# //////////////////////////////////////////////
+# //////////////////////////////////////////////
+# Principio de funciones
+
+function controlC() {
+  # Parametro -e para que me aplique los saltos de linea
+  echo -e "\n\n${redColour}[!] Saliendo...${endColour}\n"
+  # Codigo de estado no exitoso
+  exit 1
+}
+
+# controlC
+# Para capturr el atajo de teclado que acabo de escribir y redirijirlo a la funcion controlC
+trap controlC INT
+
+# Si no ccomento se ejecuta despues de 10 segundos
+# sleep 10
+
+#///////////////////////////////////////////
+#///////////////////////////////////////////
+
+function helpPanel() {
+  # Hacemos mencion el nombre del script que estamos ejecutando con $0
+  echo -e "\n${yellowColour}[+]${endColour}${grayColour} Uso:${endColour}${purpleColour} $0${endColour}\n"
+  echo -e "\t${blueColour}-m)${endColour}${grayColour} Dinero con el que desea jugar${endColour}"
+  echo -e "\t${blueColour}-t)${endColour} Tecnica de juego a utilizar${endColour}${purpleColour} (${endColour}${yellowColour}martingala${endColour}${blueColour}/${endColour}${yellowColour}inverseLabroucher${endColour}${purpleColour})${endColour}\n"
+  tput cnorm
+  exit 1
+}
+
+function martingala() {
+  echo -e ""
+  echo -e "\n[+] Dinero actual: $money"
+  echo -ne "[+] ¿Cuánto dinero con el que tienes pensado apostar? -> " && read initial_bet
+  echo -ne "[+] ¿Apostar a números pares o impares? (par/impar): " && read par_impar
+  echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de $initial_bet€ a $par_impar\033[0m\n "
+
+  # Para que cuando ganemos no apueste el doble,vale la apuesta inicial
+  backup_bet=$initial_bet
+  play_counter=1
+
+  tput civis #Ocultamos el cursor
+  while true; do
+    money=$(($money - $initial_bet))
+    echo -e "\n[+] Acabas de apostar $initial_bet€ y tienes $money€\n"
+    random_number="$(($RANDOM % 37))"
+    # echo -e "\n"
+    echo -e "[+] Ha salido el numero: $random_number"
+
+    sleep 2
+
+    if [ ! "$money" -le 0 ]; then
+      if [ "$par_impar" == "par" ]; then
+
+        # Comprobamos si es par
+        if [ "$(($random_number % 2))" -eq 0 ]; then
+          # Anidamos y evitamos elif
+          if [ "$random_number" -eq 0 ]; then
+            echo -e "\n[+] Ha salido el 0 por tanto perdemos"
+            initial_bet=$(($initial_bet * 2))
+            echo -e "[+]Ahora te quedas en $money€"
+          else
+            echo -e "[+] El numero que ha salido es Par , Ganas"
+            reward=$(($initial_bet * 2))
+            echo -e "[+] Ganas un total de $reward€"
+            money=$(($money + $reward))
+            echo -e "[+] Tienes $money€"
+            inital_bet=$backup_bet
+          fi
+
+        else
+          echo -e "[+]El numero que ha salido es Impar , Pierdes"
+          initial_bet=$(($initial_bet * 2))
+          echo -e "[+]Ahora te quedas en $money€"
+        fi
+
+        sleep 5
+
+      fi
+    else
+      echo -e "\n[+]Te has quedado sin pasta\n"
+      echo -e "[+]Han habido un total de $play_holder jugadas\n"
+      exit 0
+    fi
+
+    let counter+=1
+  done
+
+  tput cnorm #Recuperamos el cursor
+}
+
+inverseLabroucher() {
+  echo -e "\n"
+  echo -e "[+] Dinero actual: $money€"
+  echo -ne "[+] ¿Cuánto dinero con el que tienes pensado apostar? -> " && read initial_bet
+  echo -ne "[+] ¿Apostar a números pares o impares? (par/impar): " && read par_impar
+  echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de $initial_bet€ a $par_impar\033[0m\n "
+
+  declare -a my_secuencia=(1 2 3 4 5)
+
+  echo -e "\n[+] Comenzamos con la secuencia [${my_secuencia[@]}]"
+
+  seq_index=0
+  bet=${my_secuencia[$seq_index]}
+  money=$(($money - $bet))
+
+  my_secuencia=(${my_secuencia[@]} $bet)
+  echo -e "[+] Invertimos $bet€" # y la secuencia se queda en [${my_secuencia[@]}]"
+
+  tput civis
+  while true; do
+    random_number="$(($RANDOM % 37))"
+    echo -e "[+] Ha salido el numero: $random_number"
+
+    if [ "$par_impar" == "par" ] && [ "$random_number" -ne 0 ]; then
+      if [ "$(($random_number % 2))" -eq 0 ]; then
+        echo -e "[+] El numero es Par, Ganas"
+        reward=$(($bet * 2))
+        let money+=$reward
+        echo -e "\n[+] Tienes: $money€\n"
+
+        if [ "${my_secuencia[$((${#my_secuencia[@]} - 1))]}" -eq $bet ]; then
+          my_secuencia=(${my_secuencia[@]:0:((${#my_secuencia[@]} - 1))})
+        else
+          my_secuencia=(${my_secuencia[@]} $bet)
+        fi
+        seq_index=0
+        bet=$((${my_secuencia[$seq_index]} + ${my_secuencia[-1]}))
+        money=$(($money - $bet))
+
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]} $bet]"
+        echo -e "[+] Invertimos $bet€"
+      elif [ "$random_number" -eq 0 ]; then
+        echo -e "[+] Ha salido el cero, pierdes"
+
+        if [ "${my_secuencia[$((${#my_secuencia[@]} - 1))]}" -eq $bet ]; then
+          my_secuencia=(${my_secuencia[@]:0:((${#my_secuencia[@]} - 1))})
+        else
+          my_secuencia=(${my_secuencia[@]} $bet)
+        fi
+        seq_index=0
+        bet=${my_secuencia[$seq_index]}
+        money=$(($money - $bet))
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]}]"
+        echo -e "[+] Invertimos $bet€"
+      else
+        echo -e "\n[+] El número es impar, pierdes\n"
+
+        if [ "${my_secuencia[$((${#my_secuencia[@]} - 1))]}" -eq $bet ]; then
+          my_secuencia=(${my_secuencia[@]:0:((${#my_secuencia[@]} - 1))})
+        else
+          my_secuencia=(${my_secuencia[@]} $bet)
+        fi
+
+        seq_index=0
+        bet=$((${my_secuencia[$seq_index]} + ${my_secuencia[-1]}))
+        money=$(($money - $bet))
+
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]} $bet]"
+        echo -e "[+] Invertimos $bet€"
+      fi
+    fi
+
+    sleep 2
+  done
+
+  tput cnorm
+}
+
+# //////////////////////////////////////////////
+# //////////////////////////////////////////////
+# FIN DE FUNCIONES
+
+while getopts "m:t:h" arg; do
+  case $arg in
+  m) money=$OPTARG ;;
+  t) technique=$OPTARG ;;
+  # Cuando falle la opcion vamos a la  funcion panel de ayuda
+  h) helpPanel ;;
+
+  esac
+done
+
+# Estas dos variables tienen que tener contenido
+if [ $money ] && [ $technique ]; then
+  # echo "Voy a jugar con $money dinero usando la tecnica $technique"
+  if [ "$technique" == "martingala" ]; then
+    martingala
+  elif [ "$technique" == "inverseLabroucher" ]; then
+    inverseLabroucher
+  else
+    echo -e "\n${redColour}[!]${endColour}${grayColour} La técnica de juego no es valida${endColour}"
+    helpPanel
+  fi
+else
+  # Llamamos al panel de ayuda si me equivo al introducir parametros
+  helpPanel
+fi
+
+# Este código es un script de Bash que se encarga de ejecutar un juego de ruleta, utilizando dos técnicas de apuestas: Martingala e Inversa de Labouchere.
+
+# Primero, el script define algunas variables de colores para la salida de texto en la consola, y luego define algunas funciones útiles, como una función para manejar la interrupción de control-c y una función para mostrar el panel de ayuda.
+
+# Luego, hay dos funciones principales que implementan las dos técnicas de apuestas. La función martingala utiliza la estrategia Martingala, que implica duplicar la apuesta después de cada pérdida, y volver a la apuesta inicial después de cada victoria. La función inverseLabroucher utiliza la estrategia de apuestas inversa de Labouchere, que implica construir una secuencia de números y apostar la suma de los dos extremos después de cada pérdida, y eliminar los extremos de la secuencia después de cada victoria.
+
+# El código principal del script procesa los argumentos de línea de comandos para obtener la cantidad de dinero con la que se desea jugar y la técnica de apuestas a utilizar, y luego llama a la función correspondiente para ejecutar el juego. Si no se proporcionan argumentos o se proporcionan argumentos incorrectos, se muestra el panel de ayuda.#!/bin/bash
+
+# VIRUS
+
+# ganadas=0
+# perdidas=0
+# dineroGanado=0
+# dineroPerdido=0
+
+# mostrarEstadisticas() {
+#   echo -e "\n[!] Saliendo..."
+#   echo -e "Partidas ganadas: $ganadas (Dinero ganado: $dineroGanado€)"
+#   echo -e "Partidas perdidas: $perdidas (Dinero perdido: $dineroPerdido€)"
+# }
+
+# inverseLabroucher() {
+#   secuencia=(1 2 3 4)
+#   dinero=$1
+
+#   while [ $dinero -gt 0 ]; do
+#     apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+#     echo -e "\n[+] Nuestra nueva secuencia es ${secuencia[*]}"
+#     echo -e "[+] Invertimos ${apuesta}€"
+
+#     # Simulamos un número aleatorio entre 0 y 36
+#     numero=$((RANDOM % 37))
+#     echo -e "[+] Ha salido el numero: ${numero}"
+
+#     if [ $((numero % 2)) -eq 0 ]; then
+#       echo -e "[+] El numero es Par, Ganas"
+#       dinero=$((dinero + apuesta))
+#       secuencia=(${secuencia[@]:1} $((secuencia[-1] + 1)))
+#       ganadas=$((ganadas + 1))
+#       dineroGanado=$((dineroGanado + apuesta))
+#     else
+#       echo -e "[+] El número es impar, pierdes"
+#       dinero=$((dinero - apuesta))
+#       secuencia=(1 2 3 4)
+#       perdidas=$((perdidas + 1))
+#       dineroPerdido=$((dineroPerdido + apuesta))
+#     fi
+
+#     echo -e "[+] Tienes: ${dinero}€"
+#   done
+# }
+
+# trap mostrarEstadisticas SIGINT SIGTERM
+
+# inverseLabroucher 1000
+
+#!/bin/bash
+
+# ESTAN cambiadas las secuencias
+
+ganadas=0
+perdidas=0
+dineroGanado=0
+dineroPerdido=0
+maxIteraciones=100
+
+mostrarEstadisticas() {
+  echo -e "\n[!] Saliendo..."
+  echo -e "Partidas ganadas: $ganadas (Dinero ganado: $dineroGanado€)"
+  echo -e "Partidas perdidas: $perdidas (Dinero perdido: $dineroPerdido€)"
+}
+
+inverseLabroucher() {
+  secuencia=(1 2 3 4)
+  dinero=$1
+  iteracion=0
+
+  while [ $dinero -gt 0 ] && [ $iteracion -lt $maxIteraciones ]; do
+    apuesta=$((${secuencia[0]} + ${secuencia[-1]}))
+    echo -e "\n[+] Nuestra nueva secuencia es ${secuencia[*]}"
+    echo -e "[+] Invertimos ${apuesta}€"
+
+    # Simulamos un número aleatorio entre 0 y 36
+    numero=$((RANDOM % 37))
+    echo -e "[+] Ha salido el numero: ${numero}"
+
+    if [ $((numero % 2)) -eq 0 ]; then
+      echo -e "[+] El numero es Par, Ganas"
+      dinero=$((dinero + apuesta))
+      secuencia=(${secuencia[@]:1} $((secuencia[-1] + 1)))
+      ganadas=$((ganadas + 1))
+      dineroGanado=$((dineroGanado + apuesta))
+    else
+      echo -e "[+] El número es impar, pierdes"
+      dinero=$((dinero - apuesta))
+      secuencia=(1 2 3 4)
+      perdidas=$((perdidas + 1))
+      dineroPerdido=$((dineroPerdido + apuesta))
+    fi
+
+    echo -e "[+] Tienes: ${dinero}€"
+    iteracion=$((iteracion + 1))
+  done
+}
+
+trap mostrarEstadisticas SIGINT SIGTERM
+
+inverseLabroucher 1000
+#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+jugadas=()
+contador_respuesta_par=0
+contador_respuesta_impar=0
+
+echo "Bienvenido al juego de la ruleta."
+
+read -p "Ingresa el dinero que quieres jugar: " dinero
+dinero_inicial=$dinero
+
+while true; do
+    read -p "Quieres jugar a par (p) o impar (i)? " eleccion
+    if [ $eleccion == "p" ]; then
+        eleccion_texto="Par"
+        break
+    elif [ $eleccion == "i" ]; then
+        eleccion_texto="Impar"
+        break
+    else
+        echo "Opción inválida. Inténtalo de nuevo."
+    fi
+done
+
+apuesta=10
+
+while [ $dinero -gt 0 ]; do
+    respuesta=$((RANDOM % 2))
+    jugadas+=($respuesta)
+    if [ $respuesta -eq 0 ]; then
+        echo "Ha salido Par"
+        ((contador_respuesta_par++))
+        if [ $eleccion == "p" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        else
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                break
+            fi
+        fi
+    else
+        echo "Ha salido Impar"
+        ((contador_respuesta_impar++))
+        jugadas+=($respuesta)
+        if [ $eleccion == "i" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        else
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                break
+            fi
+        fi
+    fi
+done
+
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+
+echo "Resultados de las jugadas:"
+echo "Jugadas: ${jugadas[*]}"
+for ((i=${#jugadas[@]}-1; i>=0; i--)); do
+    if [ ${jugadas[$i]} -eq 0 ]; then
+        echo "Jugada $((i+1)): Par"
+    else
+        echo "Jugada $((i+1)): Impar"
+    fi
+done | column -t
+echo "Cantidad de pares: $(grep -o "0" <<< "${jugadas[*]}" | wc -l)"
+echo "Cantidad de impares: $(grep -o "1" <<< "${jugadas[*]}" | wc -l)"
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+echo "Cantidad de jugadas ganadas: $((contador_respuesta_par + contador_respuesta_impar))"
+echo "Cantidad de jugadas perdidas: $(( ${#jugadas[@]} - contador_respuesta_par - contador_respuesta_impar))"
+
+# Este es un programa en Bash que simula un juego de ruleta. Algunas de las características del programa son:
+    # CERO es par
+
+#     Pide al usuario que ingrese la cantidad de dinero que quiere jugar.
+#     Pide al usuario que elija si quiere jugar a par o impar.
+#     Juega una serie de rondas de ruleta, mostrando el resultado (par o impar) de cada ronda y actualizando la cantidad de dinero del usuario según si ganó o perdió.
+#     Cuando el usuario se queda sin dinero o decide terminar el juego, muestra el resultado final, incluyendo el número total de jugadas ganadas y perdidas, la cantidad de pares e impares, y una lista de todas las jugadas realizadas en orden inverso, indicando si cada una fue par o impar.
+
+# Además, el programa utiliza algunos operadores de comparación en Bash (como -eq y -gt) para realizar comparaciones numéricas y tomar decisiones basadas en ellas. También utiliza algunas estructuras de control de flujo (como el bucle while y los condicionales if) para controlar el flujo del programa según el comportamiento del usuario y los resultados de las jugadas.
+
+
+# Correcto, ese es el código completo del programa que simula un juego de ruleta. Como puedes ver, utiliza varias características del lenguaje Bash, incluyendo la manipulación de arreglos, operadores de comparación y estructuras de control de flujo.
+
+# Además, el programa muestra una interfaz de usuario interactiva y proporciona estadísticas detalladas al final del juego. En general, es un buen ejemplo de cómo se puede utilizar Bash para crear programas útiles y entretenidos.#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+jugadas=()
+contador_respuesta_par=0
+contador_respuesta_impar=0
+
+echo "Bienvenido al juego de la ruleta."
+
+read -p "Ingresa el dinero que quieres jugar: " dinero
+dinero_inicial=$dinero
+
+while true; do
+    read -p "Quieres jugar a par (p) o impar (i)? " eleccion
+    if [ $eleccion == "p" ]; then
+        eleccion_texto="Par"
+        break
+    elif [ $eleccion == "i" ]; then
+        eleccion_texto="Impar"
+        break
+    else
+        echo "Opción inválida. Inténtalo de nuevo."
+    fi
+done
+
+apuesta=10
+
+while [ $dinero -gt 0 ]; do
+    respuesta=$((RANDOM % 2))
+    jugadas+=($respuesta)
+    if [ $respuesta -eq 0 ]; then
+        echo "Ha salido Par"
+        ((contador_respuesta_par++))
+        if [ $eleccion == "p" ]; then
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                break
+            fi
+            apuesta=10
+        else
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        fi
+    else
+        echo "Ha salido Impar"
+        ((contador_respuesta_impar++))
+        jugadas+=($respuesta)
+        if [ $eleccion == "i" ]; then
+            dinero=$((dinero + apuesta))
+            echo "Has ganado. Tu dinero ahora es de $dinero."
+            apuesta=10
+        else
+            apuesta=$((apuesta * 2))
+            dinero=$((dinero - apuesta))
+            echo "Has perdido. Tu dinero ahora es de $dinero."
+            if [ $dinero -eq 0 ]; then
+                break
+            fi
+            apuesta=10
+        fi
+    fi
+done
+
+
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+
+echo "Resultados de las jugadas:"
+echo "Jugadas: ${jugadas[*]}"
+for ((i=${#jugadas[@]}-1; i>=0; i--)); do
+    if [ ${jugadas[$i]} -eq 0 ]; then
+        echo "Jugada $((i+1)): Par"
+    else
+        echo "Jugada $((i+1)): Impar"
+    fi
+done | column -t
+echo "Cantidad de pares: $(grep -o "0" <<< "${jugadas[*]}" | wc -l)"
+echo "Cantidad de impares: $(grep -o "1" <<< "${jugadas[*]}" | wc -l)"
+echo "Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
+echo "Cantidad de jugadas ganadas: $((contador_respuesta_par + contador_respuesta_impar))"
+echo "Cantidad de jugadas perdidas: $(( ${#jugadas[@]} - contador_respuesta_par - contador_respuesta_impar))"
+
+# Este es un programa en Bash que simula un juego de ruleta. Algunas de las características del programa son:
+    # CERO es par
+
+#     Pide al usuario que ingrese la cantidad de dinero que quiere jugar.
+#     Pide al usuario que elija si quiere jugar a par o impar.
+#     Juega una serie de rondas de ruleta, mostrando el resultado (par o impar) de cada ronda y actualizando la cantidad de dinero del usuario según si ganó o perdió.
+#     Cuando el usuario se queda sin dinero o decide terminar el juego, muestra el resultado final, incluyendo el número total de jugadas ganadas y perdidas, la cantidad de pares e impares, y una lista de todas las jugadas realizadas en orden inverso, indicando si cada una fue par o impar.
+
+# Además, el programa utiliza algunos operadores de comparación en Bash (como -eq y -gt) para realizar comparaciones numéricas y tomar decisiones basadas en ellas. También utiliza algunas estructuras de control de flujo (como el bucle while y los condicionales if) para controlar el flujo del programa según el comportamiento del usuario y los resultados de las jugadas.
+
+
+# Correcto, ese es el código completo del programa que simula un juego de ruleta. Como puedes ver, utiliza varias características del lenguaje Bash, incluyendo la manipulación de arreglos, operadores de comparación y estructuras de control de flujo.
+
+# Además, el programa muestra una interfaz de usuario interactiva y proporciona estadísticas detalladas al final del juego. En general, es un buen ejemplo de cómo se puede utilizar Bash para crear programas útiles y entretenidos.#!/bin/bash
+
+# Explicación de los operadores de comparación más comunes en Bash:
+
+#     -eq: significa "igual a". Se utiliza para comparar si dos valores son iguales numéricamente.
+
+#     -ne: significa "distinto de". Se utiliza para comparar si dos valores son diferentes numéricamente.
+
+#     -lt: significa "menor que". Se utiliza para comparar si un valor es menor que otro numéricamente.
+
+#     -le: significa "menor o igual que". Se utiliza para comparar si un valor es menor o igual que otro numéricamente.
+
+#     -gt: significa "mayor que". Se utiliza para comparar si un valor es mayor que otro numéricamente.
+
+#     -ge: significa "mayor o igual que". Se utiliza para comparar si un valor es mayor o igual que otro numéricamente.
+
+# Estos operadores se pueden utilizar en combinación con las estructuras de control de flujo de Bash, como los condicionales if, para realizar acciones diferentes dependiendo del resultado de las comparaciones.
+
+
+# contador_respuesta_par=0
+# contador_respuesta_impar=0
+
+# while true; do
+#     respuesta=$((RANDOM % 2))
+#     if [ $respuesta -eq 0 ]; then
+#         echo "Par"
+#         ((contador_respuesta_par++))
+#     else
+#         echo "Impar"
+#         ((contador_respuesta_impar++))
+#     fi
+
+#     sleep $((RANDOM % 3)) # Espera entre 0 y 4 segundos antes de continuar
+
+#     opcion=$((RANDOM % 10))
+#     if [ $opcion -eq 0 ]; then
+#         echo "Saliendo del programa..."
+#         echo "Contador de respuestas:"
+#         echo "Par: $contador_respuesta_par"
+#         echo "Impar: $contador_respuesta_impar"
+#         break
+#     fi
+# done
+
+# En este caso, hemos renombrado los contadores y las respuestas para reflejar el juego de la ruleta que se describe. Además, hemos cambiado la lógica para que el contador de respuestas se incremente para pares o impares, en lugar de para respuestas 1 o 2. Con esto, ahora el programa imprimirá "Par" si el número generado es par y "Impar" si es impar. Al final del programa, se mostrará el contador de respuestas para cada caso.
+
+
+# //////////////////////////////////////////////////////////////
+# //////////////////////////////////////////////////////////////
+
+contador_respuesta_par=0
+contador_respuesta_impar=0
+
+echo "Bienvenido al juego de la ruleta."
+read -p "¿Cuántas jugadas quieres hacer? " num_jugadas
+
+for (( i=1; i<=$num_jugadas; i++ )); do
+    respuesta=$((RANDOM % 2))
+    if [ $respuesta -eq 0 ]; then
+        echo "Par"
+        ((contador_respuesta_par++))
+    else
+        echo "Impar"
+        ((contador_respuesta_impar++))
+    fi
+
+    sleep $((RANDOM % 3)) # Espera entre 0 y 4 segundos antes de continuar
+done
+
+echo "Fin del juego. Contador de respuestas:"
+echo "Par: $contador_respuesta_par"
+echo "Impar: $contador_respuesta_impar"
