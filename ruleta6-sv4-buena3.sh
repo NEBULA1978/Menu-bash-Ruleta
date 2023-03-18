@@ -50,6 +50,7 @@ function martingala() {
   # Para que cuando ganemos no apueste el doble,vale la apuesta inicial
   backup_bet=$initial_bet
   play_counter=1
+  won_games=0
 
   tput civis #Ocultamos el cursor
   while true; do
@@ -59,7 +60,21 @@ function martingala() {
     # echo -e "\n"
     echo -e "[+] Ha salido el numero: $random_number"
 
-    # sleep 2
+    # Verificar si el usuario ha ganado 100€
+    if [ $money -ge 100 ]; then
+      echo -e "\n[+] Has ganado 100€, ¡enhorabuena!\n"
+      echo -e "[+] Partidas ganadas a $par_impar: ${won_games}"
+      read -p "¿Desea continuar jugando? (y/n): " continue_playing
+
+      if [ "$continue_playing" == "n" ]; then
+        echo -e "\n[+] Gracias por jugar, ¡hasta la próxima!\n"
+        exit 0
+      fi
+
+      won_games=0
+      backup_bet=$initial_bet
+      play_counter=1
+    fi
 
     if [ ! "$money" -le 0 ]; then
       if [ "$par_impar" == "par" ]; then
@@ -77,29 +92,93 @@ function martingala() {
             echo -e "[+] Ganas un total de $reward€"
             money=$(($money + $reward))
             echo -e "[+] Tienes $money€"
-            inital_bet=$backup_bet
+            initial_bet=$backup_bet
+
+            # Incrementar el contador de partidas ganadas
+            let won_games+=1
           fi
 
         else
           echo -e "[+]El numero que ha salido es Impar , Pierdes"
           initial_bet=$(($initial_bet * 2))
           echo -e "[+]Ahora te quedas en $money€"
+          won_games=0
         fi
-
-        # sleep 5
 
       fi
     else
       echo -e "\n[+]Te has quedado sin pasta\n"
       echo -e "[+]Han habido un total de $play_holder jugadas\n"
+    fi
+
+    if [ "$par_impar" == "impar" ]; then
+      # Comprobamos si es impar
+      if [ "$(($random_number % 2))" -ne 0 ]; then
+        echo -e "[+] El número que ha salido es Impar, Ganas"
+        reward=$(($initial_bet * 2))
+        echo -e "[+] Ganas un total de $reward€"
+        money=$(($money + $reward))
+        echo -e "[+] Tienes $money€"
+        initial_bet=$backup_bet
+
+        # Incrementar el contador de partidas ganadas
+        let won_games+=1
+      else
+        echo -e "[+] El número que ha salido es Par, Pierdes"
+        initial_bet=$(($initial_bet * 2))
+        echo -e "[+] Ahora te quedas en $money€"
+        won_games=0
+      fi
+    fi
+
+    # Preguntar al usuario si desea continuar jugando
+    read -p "¿Desea continuar jugando? (y/n): " continue_playing
+
+    if [ "$continue_playing" == "n" ]; then
+      echo -e "\n[+] Gracias por jugar, ¡hasta la próxima!\n"
       exit 0
     fi
 
-    let counter+=1
-  done
+    # Actualizar contador de partidas jugadas y establecer apuesta inicial
+    let play_counter+=1
+    initial_bet=$backup_bet
 
-  tput cnorm #Recuperamos el cursor
+    # Mostrar información de las partidas ganadas
+    if [ "$won_games" -gt 0 ]; then
+      echo -e "\n[+] Llevas $won_games partidas ganadas a $par_impar\n"
+    fi
+
+    # Preguntar al usuario si desea seguir jugando después de 10 partidas perdidas consecutivas
+    if [ "$won_games" -eq 10 ]; then
+      echo -e "\n[+] Has perdido 10 partidas consecutivas, ¿desea seguir jugando? (y/n): "
+      read continue_playing
+
+      if [ "$continue_playing" == "n" ]; then
+        echo -e "\n[+] Gracias por jugar, ¡hasta la próxima!\n"
+        exit 0
+      fi
+
+      won_games=0
+      backup_bet=$initial_bet
+      play_counter=1
+    fi
+  done
 }
+
+# DESCRIPCION
+
+# La función martingala() es un script de bash que simula un juego de ruleta utilizando la estrategia de apuestas Martingala. La Martingala es una estrategia de apuestas que consiste en doblar la apuesta cada vez que se pierde, con el objetivo de recuperar las pérdidas y obtener beneficios en la próxima apuesta ganadora.
+
+# La función comienza pidiendo al usuario la cantidad de dinero que tiene disponible para apostar, la cantidad de dinero que desea apostar inicialmente y si desea apostar a números pares o impares. A continuación, entra en un bucle que simula el juego de la ruleta.
+
+# En cada iteración del bucle, se resta la cantidad apostada inicialmente del saldo del usuario y se genera un número aleatorio que representa el número ganador en la ruleta. Luego, se verifica si el número es par o impar y se aplica la estrategia de la Martingala para calcular la cantidad apostada en la siguiente jugada. Si el usuario gana, se agrega la recompensa al saldo del usuario y se reinicia el contador de partidas ganadas a pares o impares. Si el usuario pierde, se duplica la cantidad apostada en la próxima jugada.
+
+# La función también verifica si el usuario ha ganado 100€ y pregunta si desea continuar jugando. Si el usuario se queda sin dinero, se muestra un mensaje indicando el número total de partidas jugadas. Además, si el usuario pierde 10 partidas consecutivas, se le pregunta si desea continuar jugando. Si el usuario decide dejar de jugar, se muestra un mensaje de despedida y se sale de la función.
+
+#  la función siempre pregunta al usuario si desea continuar jugando después de cada jugada, incluso si se ha alcanzado la cantidad de ganancias o si se ha perdido todo el dinero.
+
+# Si desea modificar este comportamiento, puede editar el código de la función y eliminar las líneas que solicitan al usuario si desea continuar jugando después de cada jugada. Por ejemplo, podría mover estas líneas de código fuera del bucle while y hacer que se ejecuten solo después de que se hayan completado un cierto número de jugadas o después de que se haya alcanzado un cierto nivel de ganancias o pérdidas.
+
 
 function inverseLabroucher() {
   echo -e "\n"
