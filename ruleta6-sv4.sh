@@ -86,7 +86,7 @@ function martingala() {
           echo -e "[+]Ahora te quedas en $money€"
         fi
 
-        sleep 2
+        sleep 5
 
       fi
       else
@@ -103,7 +103,7 @@ function martingala() {
 
 inverseLabroucher(){
 
-  echo -e "\n[+] Dinero actual: $money"
+  echo -e "[+] Dinero actual: $money€"
   # echo -ne "[+] ¿Cuánto dinero con el que tienes pensado apostar? -> " && read initial_bet
   echo -ne "[+] ¿Apostar a números pares o impares? (par/impar): " && read par_impar
   # echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de $initial_bet€ a $par_impar\033[0m\n "
@@ -113,24 +113,33 @@ inverseLabroucher(){
   echo -e "\n[+] Comenzamos con la secuencia [${my_secuencia[@]}]"
 
   bet=$((${my_secuencia[0]} + ${my_secuencia[-1]}))
+  money=$(($money - $bet))
 
   unset my_secuencia[0]
   unset my_secuencia[-1]
 
   my_secuencia=(${my_secuencia[@]})
 
-  echo -e "\n[+] Invertimos $bet€ y la secuencia se queda en  [${my_secuencia[@]}]"
+  echo -e "[+] Invertimos $bet€ y la secuencia se queda en  [${my_secuencia[@]}]"
+  echo -e "\n"
+  echo -e "\n[+] Tenemos tanto: $money€\n"
 
   tput civis
   while true; do
     random_number="$(($RANDOM % 37))"
-    echo -e "[+] Ha salido el numero: $random_number"
+    echo -e "[+] Ha salido el numero: $random_number\n"
 
     if [ "$par_impar" == "par" ]; then
       if [ "$(($random_number % 2))" -eq 0 ];then
         echo -e "[+] El numero es Par, Ganas"
+        reward=$(($bet*2))
+        let money+=$reward
+        echo -e "\n[+] Tenemos tanto: $money€\n"
+        my_secuencia+=[$bet]
+        my_secuencia=[${my_secuencia[@]}]
+        echo -e "\n[+] La nueva secuencia [${my_secuencia[@]}]"
       else
-        echo -e "[+] El numero es Impar, !Pierdes!"
+        echo -e "\n[+] El numero es Impar, !Pierdes!\n"
 
       fi
     fi
