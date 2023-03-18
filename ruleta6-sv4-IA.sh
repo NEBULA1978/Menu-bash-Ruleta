@@ -69,11 +69,11 @@ function martingala() {
           # Anidamos y evitamos elif
           if [ "$random_number" -eq 0 ]; then
             echo -e "\n[+] Ha salido el 0 por tanto perdemos"
-            initial_bet=$(($initial_bet*2))
+            initial_bet=$(($initial_bet * 2))
             echo -e "[+]Ahora te quedas en $money€"
           else
             echo -e "[+] El numero que ha salido es Par , Ganas"
-            reward=$(($initial_bet*2))
+            reward=$(($initial_bet * 2))
             echo -e "[+] Ganas un total de $reward€"
             money=$(($money + $reward))
             echo -e "[+] Tienes $money€"
@@ -82,69 +82,98 @@ function martingala() {
 
         else
           echo -e "[+]El numero que ha salido es Impar , Pierdes"
-          initial_bet=$(($initial_bet*2))
+          initial_bet=$(($initial_bet * 2))
           echo -e "[+]Ahora te quedas en $money€"
         fi
 
         sleep 5
 
       fi
-      else
-        echo -e "\n[+]Te has quedado sin pasta\n"
-        echo -e "[+]Han habido un total de $play_holder jugadas\n"
-        exit 0
-      fi
+    else
+      echo -e "\n[+]Te has quedado sin pasta\n"
+      echo -e "[+]Han habido un total de $play_holder jugadas\n"
+      exit 0
+    fi
 
-      let counter+=1
+    let counter+=1
   done
 
   tput cnorm #Recuperamos el cursor
 }
 
-inverseLabroucher(){
-
+inverseLabroucher() {
+  echo -e "\n"
   echo -e "[+] Dinero actual: $money€"
-  # echo -ne "[+] ¿Cuánto dinero con el que tienes pensado apostar? -> " && read initial_bet
+  echo -ne "[+] ¿Cuánto dinero con el que tienes pensado apostar? -> " && read initial_bet
   echo -ne "[+] ¿Apostar a números pares o impares? (par/impar): " && read par_impar
-  # echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de $initial_bet€ a $par_impar\033[0m\n "
+  echo -e "\n\033[1;34m[+] Vamos a empezar con una cantidad incicial de $initial_bet€ a $par_impar\033[0m\n "
 
-  declare -a  my_secuencia=(1 2 3 4)
+  declare -a my_secuencia=(1 2 3 4 5)
 
   echo -e "\n[+] Comenzamos con la secuencia [${my_secuencia[@]}]"
 
-  bet=$((${my_secuencia[0]} + ${my_secuencia[-1]}))
+  seq_index=0
+  bet=${my_secuencia[$seq_index]}
   money=$(($money - $bet))
 
-  unset my_secuencia[0]
-  unset my_secuencia[-1]
-
-  my_secuencia=(${my_secuencia[@]})
-
-  echo -e "[+] Invertimos $bet€ y la secuencia se queda en  [${my_secuencia[@]}]"
-  echo -e "\n"
-  echo -e "\n[+] Tenemos tanto: $money€\n"
+  my_secuencia=(${my_secuencia[@]} $bet)
+  echo -e "[+] Invertimos $bet€" # y la secuencia se queda en [${my_secuencia[@]}]"
 
   tput civis
   while true; do
     random_number="$(($RANDOM % 37))"
-    echo -e "[+] Ha salido el numero: $random_number\n"
+    echo -e "[+] Ha salido el numero: $random_number"
 
-    if [ "$par_impar" == "par" ]; then
-      if [ "$(($random_number % 2))" -eq 0 ];then
+    if [ "$par_impar" == "par" ] && [ "$random_number" -ne 0 ]; then
+      if [ "$(($random_number % 2))" -eq 0 ]; then
         echo -e "[+] El numero es Par, Ganas"
-        reward=$(($bet*2))
+        reward=$(($bet * 2))
         let money+=$reward
-        echo -e "\n[+] Tenemos tanto: $money€\n"
-        my_secuencia+=[$bet]
-        my_secuencia=[${my_secuencia[@]}]
-        echo -e "\n[+] La nueva secuencia [${my_secuencia[@]}]"
-      else
-        echo -e "\n[+] El numero es Impar, !Pierdes!\n"
+        echo -e "\n[+] Tienes: $money€\n"
 
+        if [ "${my_secuencia[$((${#my_secuencia[@]} - 1))]}" -eq $bet ]; then
+          my_secuencia=(${my_secuencia[@]:0:((${#my_secuencia[@]} - 1))})
+        else
+          my_secuencia=(${my_secuencia[@]} $bet)
+        fi
+        seq_index=0
+        bet=$((${my_secuencia[$seq_index]} + ${my_secuencia[-1]}))
+        money=$(($money - $bet))
+
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]} $bet]"
+        echo -e "[+] Invertimos $bet€"
+      elif [ "$random_number" -eq 0 ]; then
+        echo -e "[+] Ha salido el cero, pierdes"
+
+        if [ "${my_secuencia[$((${#my_secuencia[@]} - 1))]}" -eq $bet ]; then
+          my_secuencia=(${my_secuencia[@]:0:((${#my_secuencia[@]} - 1))})
+        else
+          my_secuencia=(${my_secuencia[@]} $bet)
+        fi
+        seq_index=0
+        bet=${my_secuencia[$seq_index]}
+        money=$(($money - $bet))
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]}]"
+        echo -e "[+] Invertimos $bet€"
+      else
+        echo -e "\n[+] El número es impar, pierdes\n"
+
+        if [ "${my_secuencia[$((${#my_secuencia[@]} - 1))]}" -eq $bet ]; then
+          my_secuencia=(${my_secuencia[@]:0:((${#my_secuencia[@]} - 1))})
+        else
+          my_secuencia=(${my_secuencia[@]} $bet)
+        fi
+
+        seq_index=0
+        bet=$((${my_secuencia[$seq_index]} + ${my_secuencia[-1]}))
+        money=$(($money - $bet))
+
+        echo -e "[+] Nuestra nueva secuencia es [${my_secuencia[@]} $bet]"
+        echo -e "[+] Invertimos $bet€"
       fi
     fi
 
-  sleep 2
+    sleep 2
   done
 
   tput cnorm
@@ -179,3 +208,11 @@ else
   # Llamamos al panel de ayuda si me equivo al introducir parametros
   helpPanel
 fi
+
+# Este código es un script de Bash que se encarga de ejecutar un juego de ruleta, utilizando dos técnicas de apuestas: Martingala e Inversa de Labouchere.
+
+# Primero, el script define algunas variables de colores para la salida de texto en la consola, y luego define algunas funciones útiles, como una función para manejar la interrupción de control-c y una función para mostrar el panel de ayuda.
+
+# Luego, hay dos funciones principales que implementan las dos técnicas de apuestas. La función martingala utiliza la estrategia Martingala, que implica duplicar la apuesta después de cada pérdida, y volver a la apuesta inicial después de cada victoria. La función inverseLabroucher utiliza la estrategia de apuestas inversa de Labouchere, que implica construir una secuencia de números y apostar la suma de los dos extremos después de cada pérdida, y eliminar los extremos de la secuencia después de cada victoria.
+
+# El código principal del script procesa los argumentos de línea de comandos para obtener la cantidad de dinero con la que se desea jugar y la técnica de apuestas a utilizar, y luego llama a la función correspondiente para ejecutar el juego. Si no se proporcionan argumentos o se proporcionan argumentos incorrectos, se muestra el panel de ayuda.
